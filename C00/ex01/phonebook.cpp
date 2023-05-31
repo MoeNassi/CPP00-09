@@ -6,16 +6,27 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 05:19:15 by mnassi            #+#    #+#             */
-/*   Updated: 2023/05/31 04:42:12 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/05/31 05:21:14 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "phonebook.hpp"
 
-void	ft_fill_1st(std::string& input)
+void	ft_searchcont(phonebook *cont)
+{
+	std::cout << " | " << cont->getfname() << " | " << cont->getlname() << " | " << cont->getnname() << " | "
+		<< cont->getphone() << " | " << cont->getdar() << " | " << std::endl;
+}
+
+void	ft_fill_1st(std::string& input, int del)
 {
 	phonebook contact;
 
+	if (del == 1)
+	{
+		ft_searchcont(&contact);
+		return ;
+	}
 	std::cout << "Enter first name : ";
 	std::cin >> input;
 	contact.setName(input);
@@ -33,10 +44,15 @@ void	ft_fill_1st(std::string& input)
 	contact.setSecret(input);
 }
 
-void	ft_fill_2st(std::string& input)
+void	ft_fill_2st(std::string& input, int del)
 {
 	phonebook contact2;
 
+	if (del == 1)
+	{
+		ft_searchcont(&contact2);
+		return ;
+	}
 	std::cout << "Enter first name : ";
 	std::cin >> input;
 	contact2.setName(input);
@@ -54,10 +70,15 @@ void	ft_fill_2st(std::string& input)
 	contact2.setSecret(input);
 }
 
-void	ft_fill_3st(std::string& input)
+void	ft_fill_3st(std::string& input, int del)
 {
 	phonebook contact3;
 
+	if (del == 1)
+	{
+		ft_searchcont(&contact3);
+		return ;
+	}
 	std::cout << "Enter first name : ";
 	std::cin >> input;
 	contact3.setName(input);
@@ -75,10 +96,15 @@ void	ft_fill_3st(std::string& input)
 	contact3.setSecret(input);
 }
 
-void	ft_fill_4st(std::string& input)
+void	ft_fill_4st(std::string& input, int del)
 {
 	phonebook contact4;
 
+	if (del == 1)
+	{
+		ft_searchcont(&contact4);
+		return ;
+	}
 	std::cout << "Enter first name : ";
 	std::cin >> input;
 	contact4.setName(input);
@@ -96,10 +122,15 @@ void	ft_fill_4st(std::string& input)
 	contact4.setSecret(input);
 }
 
-void	ft_fill_5st(std::string& input)
+void	ft_fill_5st(std::string& input, int del)
 {
 	phonebook contact5;
 
+	if (del == 1)
+	{
+		ft_searchcont(&contact5);
+		return ;
+	}
 	std::cout << "Enter first name : ";
 	std::cin >> input;
 	contact5.setName(input);
@@ -117,10 +148,15 @@ void	ft_fill_5st(std::string& input)
 	contact5.setSecret(input);
 }
 
-void	ft_fill_6st(std::string& input)
+void	ft_fill_6st(std::string& input, int del)
 {
 	phonebook contact6;
 
+	if (del == 1)
+	{
+		ft_searchcont(&contact6);
+		return ;
+	}
 	std::cout << "Enter first name : ";
 	std::cin >> input;
 	contact6.setName(input);
@@ -138,10 +174,15 @@ void	ft_fill_6st(std::string& input)
 	contact6.setSecret(input);
 }
 
-void	ft_fill_7st(std::string& input)
+void	ft_fill_7st(std::string& input, int del)
 {
 	phonebook contact7;
 
+	if (del == 1)
+	{
+		ft_searchcont(&contact7);
+		return ;
+	}
 	std::cout << "Enter first name : ";
 	std::cin >> input;
 	contact7.setName(input);
@@ -159,10 +200,15 @@ void	ft_fill_7st(std::string& input)
 	contact7.setSecret(input);
 }
 
-void	ft_fill_8st(std::string& input)
+void	ft_fill_8st(std::string& input, int del)
 {
 	phonebook contact8;
 
+	if (del == 1)
+	{
+		ft_searchcont(&contact8);
+		return ;
+	}
 	std::cout << "Enter first name : ";
 	std::cin >> input;
 	contact8.setName(input);
@@ -180,27 +226,44 @@ void	ft_fill_8st(std::string& input)
 	contact8.setSecret(input);
 }
 
+void	ft_search()
+{
+	std::string	stock;
+	std::string	input;
+
+	// std::cout << "Please Enter more details about the contact : ";
+	// std::cin >> stock;
+	ft_fill_1st(input, 1);
+	// ft_fill_2st(input, 1);
+	// ft_fill_3st(input, 1);
+	// ft_fill_4st(input, 1);
+	// ft_fill_5st(input, 1);
+	// ft_fill_6st(input, 1);
+	// ft_fill_7st(input, 1);
+	// ft_fill_8st(input, 1);
+}
+
 int	askinguser(std::string& input, int nmb)
 {
 	phonebook contact;
 
 	nmb = contact.incrementcontact(nmb);
 	if (nmb == 1)
-		ft_fill_1st(input);
+		ft_fill_1st(input, 0);
 	if (nmb == 2)
-		ft_fill_2st(input);
+		ft_fill_2st(input, 0);
 	if (nmb == 3)
-		ft_fill_3st(input);
+		ft_fill_3st(input, 0);
 	if (nmb == 4)
-		ft_fill_4st(input);
+		ft_fill_4st(input, 0);
 	if (nmb == 5)
-		ft_fill_5st(input);
+		ft_fill_5st(input, 0);
 	if (nmb == 6)
-		ft_fill_6st(input);
+		ft_fill_6st(input, 0);
 	if (nmb == 7)
-		ft_fill_7st(input);
+		ft_fill_7st(input, 0);
 	if (nmb == 8)
-		ft_fill_8st(input);
+		ft_fill_8st(input, 0);
 	return (nmb);
 }
 
@@ -219,7 +282,7 @@ int main()
 		if (input == "ADD")
 			i = askinguser(input, i);
 		else if (input == "SEARCH")
-			ft_search()
+			ft_search();
 	}
 	return (0);
 }

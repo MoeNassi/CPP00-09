@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 05:24:45 by mnassi            #+#    #+#             */
-/*   Updated: 2023/05/31 04:18:16 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/05/31 05:16:51 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,19 @@ class phonebook {
 		}
 	    std::string getfname() const {
     	    return fname;
-    }
+    	}
+		std::string getlname() const {
+    	    return lname;
+		}
+		std::string getnname() const {
+    	    return nname;
+		}
+		std::string getphone() const {
+    	    return phone;
+		}
+		std::string getdar() const {
+    	    return dark;
+		}
 };
 
 #endif
