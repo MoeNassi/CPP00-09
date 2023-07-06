@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 02:22:22 by mnassi            #+#    #+#             */
-/*   Updated: 2023/07/06 05:47:43 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/07/06 06:05:25 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,12 @@ int		add_contact(phonebook *div, int i)
 	std::cout << "Nick Name : ";
 	std::cin >> input;
 	div->contact[i].setterNname(input);
+	std::cout << "Phone Number : ";
+	std::cin >> input;
+	div->contact[i].setterPnumber(input);
+	std::cout << "Dark Secret : ";
+	std::cin >> input;
+	div->contact[i].setterDsecret(input);
 	i++;
 	return (i);
 }
@@ -39,7 +45,8 @@ void	search_contact(phonebook *div)
 	for (int i = 0; i < 8; i++)
 	{
 		if (div->contact[i].getterFname() == input)
-			std::cout << div->contact[i].getterFname() << " | " << div->contact[i].getterSname() << " | " << div->contact[i].getterNname() << std::endl;
+			std::cout << i + 1 << "          |          " << div->contact[i].getterFname() << "          |          "
+				<< div->contact[i].getterSname() << "          |          " << div->contact[i].getterNname() << std::endl;
 	}
 }
 
