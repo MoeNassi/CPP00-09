@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 05:22:14 by mnassi            #+#    #+#             */
-/*   Updated: 2023/05/30 05:24:02 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/07/06 02:07:05 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int main(int count, char **strings)
 
 	if (count == 1)
 	{
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
+		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << "\n";
 		return (0);
 	}
 	for (int i = 1; strings[i]; i++)

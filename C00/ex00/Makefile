@@ -1,17 +1,17 @@
 NAME = megaphone
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 CPP = c++
 
-SRC = megaphone.c
+SRC = megaphone.cpp
 
-OBJ = $(SRC:.c=.o)
+OBJ = $(SRC:.cpp=.o)
 
 all : $(NAME)
 
 $(NAME) : $(OBJ)
-	$(CPP) $(CFLAGS) $(OBJ) -o $?
+	$(CPP) $(CFLAGS) $(OBJ) -o $(NAME)
 
 clean :
 	rm -rf $(OBJ)
