@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 02:22:22 by mnassi            #+#    #+#             */
-/*   Updated: 2023/07/07 02:04:44 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/07/07 04:59:57 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,41 +14,28 @@
 
 int		add_contact(phonebook *div, int i)
 {
-	std::string input;
+	std::string dsecret;
 	std::string	fname;
 	std::string	sname;
 	std::string	nname;
 	std::string	pnumber;
 
 	std::cout << "First Name : ";
-	if (!std::getline(std::cin, input))
-		exit(0);
-	fname = input;
+	std::cin >> fname;
 	std::cout << "Second Name : ";
-	if (!std::getline(std::cin, input))
-		exit(0);
-	sname = input;
+	std::cin >> sname;
 	std::cout << "Nick Name : ";
-	if (!std::getline(std::cin, input))
-		exit(0);
-	nname = input;
+	std::cin >> nname;
 	std::cout << "Phone Number : ";
-	if (!std::getline(std::cin, input))
-		exit(0);
-	pnumber = input;
+	std::cin >> pnumber;
 	std::cout << "Dark Secret : ";
-	if (!std::getline(std::cin, input))
-		exit(0);
-	if (!(fname.empty() || sname.empty() || nname.empty() || pnumber.empty()
-		|| input.empty()))
-	{
-		div->contact[i].setterFname(fname);
-		div->contact[i].setterSname(sname);
-		div->contact[i].setterNname(nname);
-		div->contact[i].setterPnumber(pnumber);
-		div->contact[i].setterDsecret(input);
-		i++;
-	}
+	std::cin >> dsecret;
+	div->contact[i].setterFname(fname);
+	div->contact[i].setterSname(sname);
+	div->contact[i].setterNname(nname);
+	div->contact[i].setterPnumber(pnumber);
+	div->contact[i].setterDsecret(dsecret);
+	i++;
 	return (i);
 }
 
@@ -56,32 +43,34 @@ void	search_contact(phonebook *div)
 {
 	int	al;
 
-	std::cout << std::setw(10) << "Index" << "|" << "First Name" << "| "
-		<< "Last Name" << "| " << "Nick Name" << "|" << std::endl;
+	std::cout << "|" << std::setw(10) << YELLOW "Index" RESET << "|" << std::setw(10) << YELLOW "First Name" RESET << "|"
+		<< std::setw(10) << YELLOW "Last Name" RESET << "|" << std::setw(10) << YELLOW "Nick Name" RESET << "|" << std::endl;
 	for (int j = 0; j < 8; j++)
 	{
 		if (div->contact[j].getterFname().empty() || div->contact[j].getterSname().empty()
 				|| div->contact[j].getterNname().empty() || div->contact[j].getterPnumber().empty()
 				|| div->contact[j].getterDsecret().empty())
 			break ;
-		std::cout << std::setw(10) << j + 1  << "|" << std::setw(10);
+		std::cout << "|" << std::setw(10) << YELLOW << j + 1 << RESET;
 		if (div->contact[j].getterFname().length() - 1 < 10)
-			std::cout << div->contact[j].getterFname() << "|" << std::setw(10);
+			std::cout << "|" << std::setw(10) << YELLOW << div->contact[j].getterFname() << RESET;
 		else
-			std::cout << div->contact[j].getterFname().substr(0, 8) << "." << "|";
+			std::cout << "|" << YELLOW << div->contact[j].getterFname().substr(0, 8) + "." << RESET;
 		if (div->contact[j].getterSname().length() - 1 < 10)
-			std::cout << div->contact[j].getterSname() << "|" << std::setw(10);
+			std::cout << "|" << std::setw(10) << YELLOW << div->contact[j].getterSname() << RESET;
 		else
-			std::cout << div->contact[j].getterSname().substr(0, 8) << "." << "|";
+			std::cout << "|" << YELLOW << div->contact[j].getterSname().substr(0, 8) + "." << RESET;
 		if (div->contact[j].getterNname().length() - 1 < 10)
-			std::cout << div->contact[j].getterNname() <<  "|" << std::endl;
+			std::cout << "|" << std::setw(10) << YELLOW << div->contact[j].getterNname() << RESET <<  "|" << std::endl;
 		else
-			std::cout << div->contact[j].getterNname().substr(0, 8) << "." << "|" << std::endl;
+			std::cout << "|" << YELLOW << div->contact[j].getterNname().substr(0, 8) + "." << RESET << "|" << std::endl;
 	}
 	std::cout << "Enter index of contact : ";
 	std::cin >> al;
-	if (al > 8)
-		std::cout << "Error the index is above 8 or is not a digit" << "\n";
+	if (al > 8 || isdigit(al)) {
+		std::cout << "Error contact not found \n";
+		exit(0);
+	}
 	else
 	{
 		for (int i = 0; i < 8; i++)
@@ -110,16 +99,18 @@ int main()
 
 	input = "";
 	i = 0;
-	while (input != "EXIT")
+	while (!std::cin.fail())
 	{
-		std::cout << "Enter a command : ";
-		if (!std::getline(std::cin, input))
+		std::cout << BLUE "COMMANDS : " RESET << CYAN "ADD | SEARCH | EXIT " RESET << std::endl;
+		std::cout << RED "Enter one : " RESET;
+		std::cin >> input;
+		if (!input.compare("EXIT"))
 			exit(0);
-		if (input == "ADD")
+		if (!input.compare("ADD"))
 			i = add_contact(&div, i);
 		if (i > 7)
 			i = 7;
-		if (input == "SEARCH")
+		if (!input.compare("SEARCH"))
 			search_contact(&div);
 	}
 	return (0);
