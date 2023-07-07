@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 05:06:26 by mnassi            #+#    #+#             */
-/*   Updated: 2023/07/06 06:00:29 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/07/06 08:42:44 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <iostream>
 #include <string>
+#include <iomanip>
 
 class contacts {
 	private :
@@ -55,6 +56,7 @@ class contacts {
 		std::string getterDsecret() {
 			return (Dsecret);
 		}
+	~contacts() {};
 };
 
 #endif
