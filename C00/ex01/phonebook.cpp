@@ -6,13 +6,11 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 02:22:22 by mnassi            #+#    #+#             */
-/*   Updated: 2023/07/09 04:26:44 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/07/09 05:24:12 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "phonebook.hpp"
-#include "contacts.hpp"
-#define st std::string
 
 int	checkall(st fname, st sname, st nname, st pnumber, st dsecret){
 	for (int index = 0; pnumber[index];) {
@@ -113,10 +111,12 @@ void	search_contact(phonebook *div, int ch)
 			std::cout << "|" << div->contact[j].getterNname().substr(0, 9) + "." << "|" RESET << std::endl;
 	}
 	std::cout << "Enter index of contact : ";
-	if (!std::getline(std::cin, al))
+	if (!std::getline(std::cin, al).fail()) {
+		std::cout << RED "Error contact not found" RESET << std::endl;
 		return ;
+	}
 	if (al.empty() || stoi(al) > 7 || stoi(al) >= ch) {
-		std::cout << "Error contact not found \n";
+		std::cout << RED "Error contact not found" RESET << std::endl;
 		exit(0);
 	}
 	else

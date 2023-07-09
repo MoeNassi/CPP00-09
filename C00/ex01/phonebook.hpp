@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 05:24:45 by mnassi            #+#    #+#             */
-/*   Updated: 2023/07/09 01:46:36 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/07/09 05:16:22 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <iomanip>
 #include "contacts.hpp"
 #include <string>
+#define st std::string
 
 #define RED    "\x1b[1;31m"
 #define CYAN    "\x1b[1;36m"
