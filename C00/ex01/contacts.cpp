@@ -1,44 +1,52 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   contact.cpp                                        :+:      :+:    :+:   */
+/*   contacts.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 00:14:09 by mnassi            #+#    #+#             */
-/*   Updated: 2023/07/09 01:45:27 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/07/10 03:44:19 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "contacts.hpp"
 
-void contacts::setterFname(std::string Fame) {
+
+contacts::contacts() {
+
+}
+contacts::~contacts() {
+	
+}
+
+void contacts::setterFname(st Fame) {
 	Fname = Fame;
 }
-void contacts::setterSname(std::string Same) {
+void contacts::setterSname(st Same) {
 	Sname = Same;
 }
-void contacts::setterNname(std::string Name) {
+void contacts::setterNname(st Name) {
 	Nname = Name;
 }
-void contacts::setterPnumber(std::string phone) {
+void contacts::setterPnumber(st phone) {
 	Pnumber = phone;
 }
-void contacts::setterDsecret(std::string secret) {
+void contacts::setterDsecret(st secret) {
 	Dsecret = secret;
 }
-std::string contacts::getterFname() {
+st contacts::getterFname() {
 	return (Fname);
 }
-std::string contacts::getterSname() {
+st contacts::getterSname() {
 	return (Sname);
 }
-std::string contacts::getterNname() {
+st contacts::getterNname() {
 	return (Nname);
 }
-std::string contacts::getterPnumber() {
+st contacts::getterPnumber() {
 	return (Pnumber);
 }
-std::string contacts::getterDsecret() {
+st contacts::getterDsecret() {
 	return (Dsecret);
 }

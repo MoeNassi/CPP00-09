@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 05:06:26 by mnassi            #+#    #+#             */
-/*   Updated: 2023/07/09 01:46:54 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/07/10 03:45:39 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,27 +16,29 @@
 #include <iostream>
 #include <string>
 #include <iomanip>
+#define st std::string
 
 class contacts {
 	private :
-		std::string Fname;
-		std::string Sname;
-		std::string Nname;
-		std::string Pnumber;
-		std::string Dsecret;
-	public : 
-		std::string getterFname();
-		std::string getterSname();
-		std::string getterNname();
-		std::string getterPnumber();
-		std::string getterDsecret();
+		st Fname;
+		st Sname;
+		st Nname;
+		st Pnumber;
+		st Dsecret;
+	public :
+		contacts();
+		st getterFname();
+		st getterSname();
+		st getterNname();
+		st getterPnumber();
+		st getterDsecret();
 
-		void setterFname(std::string Fame);
-		void setterSname(std::string Same);
-		void setterNname(std::string Name);
-		void setterPnumber(std::string phone);
-		void setterDsecret(std::string secret);
-	~contacts() {};
+		void setterFname(st Fame);
+		void setterSname(st Same);
+		void setterNname(st Name);
+		void setterPnumber(st phone);
+		void setterDsecret(st secret);
+	~contacts();
 };
 
 #endif

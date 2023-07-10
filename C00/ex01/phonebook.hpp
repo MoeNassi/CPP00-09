@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 05:24:45 by mnassi            #+#    #+#             */
-/*   Updated: 2023/07/09 05:16:22 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/07/10 04:18:44 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,12 @@
 
 class phonebook {
 	public :
-		phonebook() {};
+		phonebook();
 		contacts contact[8];
-	~phonebook() {};
+	~phonebook();
 };
+
+void	search_contact(phonebook *div, int ch);
+int		add_contact(phonebook *div, int i);
 
 #endif

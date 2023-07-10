@@ -6,13 +6,20 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 02:22:22 by mnassi            #+#    #+#             */
-/*   Updated: 2023/07/09 05:24:12 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/07/10 04:18:48 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "phonebook.hpp"
 
-int	checkall(st fname, st sname, st nname, st pnumber, st dsecret){
+phonebook::phonebook() {
+	
+};
+phonebook::~phonebook() {
+	
+};
+
+int	checkall(st fname, st sname, st nname, st pnumber, st dsecret) {
 	for (int index = 0; pnumber[index];) {
 		if (isdigit(pnumber[index]))
 			index++;
@@ -20,25 +27,25 @@ int	checkall(st fname, st sname, st nname, st pnumber, st dsecret){
 			return (0);
 	}
 	for (int first = 0; fname[first];) {
-		if (isalpha(fname[first]))
+		if (isalpha(fname[first]) || fname[first] == 32)
 			first++;
 		else
 			return (0);
 	}
 	for (int sec = 0; sname[sec];) {
-		if (isalpha(sname[sec]))
+		if (isalpha(sname[sec]) || sname[sec] == 32)
 			sec++;
 		else
 			return (0);
 	}
 	for (int third = 0; nname[third];) {
-		if (isalpha(nname[third]))
+		if (isalpha(nname[third]) || nname[third] == 32)
 			third++;
 		else
 			return (0);
 	}
 	for (int fourth = 0; dsecret[fourth];) {
-		if (isalpha(dsecret[fourth]))
+		if (isalpha(dsecret[fourth]) || dsecret[fourth] == 32)
 			fourth++;
 		else
 			return (0);
@@ -111,13 +118,17 @@ void	search_contact(phonebook *div, int ch)
 			std::cout << "|" << div->contact[j].getterNname().substr(0, 9) + "." << "|" RESET << std::endl;
 	}
 	std::cout << "Enter index of contact : ";
-	if (!std::getline(std::cin, al).fail()) {
+	if (std::getline(std::cin, al).fail()) {
+		std::cout << RED "Error contact not found" RESET << std::endl;
+		return ;
+	}
+	if (!isdigit(al[0]) || al.length() > 1) {
 		std::cout << RED "Error contact not found" RESET << std::endl;
 		return ;
 	}
 	if (al.empty() || stoi(al) > 7 || stoi(al) >= ch) {
 		std::cout << RED "Error contact not found" RESET << std::endl;
-		exit(0);
+		return ;
 	}
 	else
 	{
@@ -135,30 +146,4 @@ void	search_contact(phonebook *div, int ch)
 			}
 		}
 	}
-}
-
-int main()
-{
-	int			i;
-	phonebook	div;
-	st	input;
-
-	input = "";
-	i = 0;
-	while (true)
-	{
-		std::cout << BLUE "COMMANDS : " RESET << CYAN "ADD | SEARCH | EXIT " RESET << std::endl;
-		std::cout << RED "Enter one : " RESET;
-		if (!std::getline(std::cin, input))
-			exit(0);
-		if (!input.compare("EXIT"))
-			exit(0);
-		if (!input.compare("ADD"))
-			i = add_contact(&div, i);
-		if (i > 7)
-			i = 7;
-		if (!input.compare("SEARCH"))
-			search_contact(&div, i);
-	}
-	return (0);
 }

@@ -4,7 +4,7 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 CPP = c++
 
-SRC = phonebook.cpp contacts.cpp
+SRC = phonebook.cpp contacts.cpp Main.cpp
 
 HEADER = phonebook.hpp contacts.hpp
 
