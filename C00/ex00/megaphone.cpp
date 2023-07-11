@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 05:22:14 by mnassi            #+#    #+#             */
-/*   Updated: 2023/07/06 02:07:05 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/07/11 09:32:52 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,7 @@ int main(int count, char **strings)
 	for (int i = 1; strings[i]; i++)
 	{
 		for (j = 0; strings[i][j]; j++)
-		{
-			if (strings[i][j] >= 'a' && strings[i][j] <= 'z')
-				strings[i][j] -= 32;
-			std::cout << strings[i][j];
-		}
+			std::cout << (char)toupper(strings[i][j]);
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 04:17:39 by mnassi            #+#    #+#             */
-/*   Updated: 2023/07/10 04:18:12 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/07/11 09:25:10 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ int main()
 			return (0);
 		if (!input.compare("EXIT"))
 			return (0);
-		if (i > 7 && !input.compare("ADD"))
-			add_contact(&div, 0);
-		else if (!input.compare("ADD"))
+		if (!input.compare("ADD"))
 			i = add_contact(&div, i);
+		if (i > 7)
+			i = 0;
 		if (!input.compare("SEARCH"))
 			search_contact(&div, i);
 	}

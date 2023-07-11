@@ -6,18 +6,38 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 02:22:22 by mnassi            #+#    #+#             */
-/*   Updated: 2023/07/10 04:18:48 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/07/11 09:15:28 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "phonebook.hpp"
 
 phonebook::phonebook() {
-	
+
 };
 phonebook::~phonebook() {
-	
+
 };
+
+contacts	phonebook::getter_contact(int i) {
+	return (contact[i]);
+}
+
+void		phonebook::contact_setf(st fn, int i) {
+	contact[i].setterFname(fn);
+}
+void		phonebook::contact_setl(st ln, int i) {
+	contact[i].setterSname(ln);
+}
+void		phonebook::contact_setn(st nn, int i) {
+	contact[i].setterNname(nn);
+}
+void		phonebook::contact_setp(st pn, int i) {
+	contact[i].setterPnumber(pn);
+}
+void		phonebook::contact_setd(st ds, int i) {
+	contact[i].setterDsecret(ds);
+}
 
 int	checkall(st fname, st sname, st nname, st pnumber, st dsecret) {
 	for (int index = 0; pnumber[index];) {
@@ -78,13 +98,16 @@ int		add_contact(phonebook *div, int i)
 		return (i);
 	if (!(fname.empty() || sname.empty() || nname.empty() || pnumber.empty() || dsecret.empty()
 		|| !checkall(fname, sname, nname, pnumber, dsecret))) {
-		div->contact[i].setterFname(fname);
-		div->contact[i].setterSname(sname);
-		div->contact[i].setterNname(nname);
-		div->contact[i].setterPnumber(pnumber);
-		div->contact[i].setterDsecret(dsecret);
+		div->phonebook::contact_setf(fname, i);
+		div->phonebook::contact_setl(sname, i);
+		div->phonebook::contact_setn(nname, i);
+		div->phonebook::contact_setp(pnumber, i);
+		div->phonebook::contact_setd(dsecret, i);
+		std::cout << GREEN "Contact Added" RESET << std::endl;
 		i++;
 	}
+	else
+		std::cout << RED "Contact Removed" RESET << std::endl;
 	return (i);
 }
 
@@ -99,23 +122,23 @@ void	search_contact(phonebook *div, int ch)
 	<< "|" RESET << std::endl;
 	for (int j = 0; j < 8; j++)
 	{
-		if (div->contact[j].getterFname().empty() || div->contact[j].getterSname().empty()
-				|| div->contact[j].getterNname().empty() || div->contact[j].getterPnumber().empty()
-					|| div->contact[j].getterDsecret().empty())
+		if (div->phonebook::getter_contact(j).getterFname().empty() || div->phonebook::getter_contact(j).getterSname().empty()
+				|| div->phonebook::getter_contact(j).getterNname().empty() || div->phonebook::getter_contact(j).getterPnumber().empty()
+					|| div->phonebook::getter_contact(j).getterDsecret().empty())
 				break ;
 			std::cout << YELLOW "|" << std::setw(10) << j;
-			if (div->contact[j].getterFname().length() - 1 < 10)
-				std::cout << "|" << std::setw(10) << div->contact[j].getterFname();
+			if (div->phonebook::getter_contact(j).getterFname().length() - 1 < 10)
+				std::cout << "|" << std::setw(10) << div->phonebook::getter_contact(j).getterFname();
 			else
-				std::cout << "|" << div->contact[j].getterFname().substr(0, 9) + ".";
-			if (div->contact[j].getterSname().length() - 1 < 10)
-			std::cout << "|" << std::setw(10) << div->contact[j].getterSname();
+				std::cout << "|" << div->phonebook::getter_contact(j).getterFname().substr(0, 9) + ".";
+			if (div->phonebook::getter_contact(j).getterSname().length() - 1 < 10)
+			std::cout << "|" << std::setw(10) << div->phonebook::getter_contact(j).getterSname();
 		else
-			std::cout << "|" << div->contact[j].getterSname().substr(0, 9) + ".";
-		if (div->contact[j].getterNname().length() - 1 < 10)
-			std::cout << "|" << std::setw(10) << div->contact[j].getterNname() <<  "|" RESET << std::endl;
+			std::cout << "|" << div->phonebook::getter_contact(j).getterSname().substr(0, 9) + ".";
+		if (div->phonebook::getter_contact(j).getterNname().length() - 1 < 10)
+			std::cout << "|" << std::setw(10) << div->phonebook::getter_contact(j).getterNname() <<  "|" RESET << std::endl;
 		else
-			std::cout << "|" << div->contact[j].getterNname().substr(0, 9) + "." << "|" RESET << std::endl;
+			std::cout << "|" << div->phonebook::getter_contact(j).getterNname().substr(0, 9) + "." << "|" RESET << std::endl;
 	}
 	std::cout << "Enter index of contact : ";
 	if (std::getline(std::cin, al).fail()) {
@@ -134,15 +157,15 @@ void	search_contact(phonebook *div, int ch)
 	{
 		for (int i = 0; i < 8; i++)
 		{
-			if (stoi(al) == i && !(div->contact[i].getterFname().empty() && div->contact[i].getterSname().empty()
-				&& div->contact[i].getterNname().empty() && div->contact[i].getterPnumber().empty() &&
-				div->contact[i].getterDsecret().empty()))
+			if (stoi(al) == i && !(div->phonebook::getter_contact(i).getterFname().empty() && div->phonebook::getter_contact(i).getterSname().empty()
+				&& div->phonebook::getter_contact(i).getterNname().empty() && div->phonebook::getter_contact(i).getterPnumber().empty() &&
+				div->phonebook::getter_contact(i).getterDsecret().empty()))
 			{
-				std::cout << "First Name : " << div->contact[i].getterFname() << std::endl;
-				std::cout << "Last Name : " << div->contact[i].getterSname() << std::endl;
-				std::cout << "Nick Name : " << div->contact[i].getterNname() << std::endl;
-				std::cout << "Phone number : " << div->contact[i].getterPnumber() << std::endl;
-				std::cout << "Dark Secret : " << div->contact[i].getterDsecret() << std::endl;
+				std::cout << "First Name : " << div->phonebook::getter_contact(i).getterFname() << std::endl;
+				std::cout << "Last Name : " << div->phonebook::getter_contact(i).getterSname() << std::endl;
+				std::cout << "Nick Name : " << div->phonebook::getter_contact(i).getterNname() << std::endl;
+				std::cout << "Phone number : " << div->phonebook::getter_contact(i).getterPnumber() << std::endl;
+				std::cout << "Dark Secret : " << div->phonebook::getter_contact(i).getterDsecret() << std::endl;
 			}
 		}
 	}

@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 05:24:45 by mnassi            #+#    #+#             */
-/*   Updated: 2023/07/10 04:18:44 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/07/11 09:13:41 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,20 @@
 #define MAGENTA "\x1b[35m"
 
 class phonebook {
-	public :
-		phonebook();
+	private : 
 		contacts contact[8];
+	public : 
+		phonebook();
+		contacts	getter_contact(int i);
+		void		contact_setf(st fn, int i);
+		void		contact_setl(st ln, int i);
+		void		contact_setn(st nn, int i);
+		void		contact_setp(st pn, int i);
+		void		contact_setd(st ds, int i);
 	~phonebook();
 };
 
-void	search_contact(phonebook *div, int ch);
 int		add_contact(phonebook *div, int i);
+void	search_contact(phonebook *div, int ch);
 
 #endif
