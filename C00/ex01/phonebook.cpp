@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 02:22:22 by mnassi            #+#    #+#             */
-/*   Updated: 2023/07/11 14:03:07 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/07/13 11:49:41 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ int		add_contact(phonebook *div, int i)
 	return (i);
 }
 
-void	search_contact(phonebook *div, int ch)
+void	search_contact(phonebook *div)
 {
 	st	al;
 
@@ -149,24 +149,20 @@ void	search_contact(phonebook *div, int ch)
 		std::cout << RED "Error contact not found" RESET << std::endl;
 		return ;
 	}
-	if (al.empty() || stoi(al) > 7 || stoi(al) >= ch) {
+	if (al.empty() || stoi(al) > 7) {
 		std::cout << RED "Error contact not found" RESET << std::endl;
 		return ;
 	}
-	else
+	if (!(div->phonebook::getter_contact(stoi(al)).getterFname().empty() && div->phonebook::getter_contact(stoi(al)).getterSname().empty()
+		&& div->phonebook::getter_contact(stoi(al)).getterNname().empty() && div->phonebook::getter_contact(stoi(al)).getterPnumber().empty() &&
+		div->phonebook::getter_contact(stoi(al)).getterDsecret().empty()))
 	{
-		for (int i = 0; i < 8; i++)
-		{
-			if (stoi(al) == i && !(div->phonebook::getter_contact(i).getterFname().empty() && div->phonebook::getter_contact(i).getterSname().empty()
-				&& div->phonebook::getter_contact(i).getterNname().empty() && div->phonebook::getter_contact(i).getterPnumber().empty() &&
-				div->phonebook::getter_contact(i).getterDsecret().empty()))
-			{
-				std::cout << "First Name : " << div->phonebook::getter_contact(i).getterFname() << std::endl;
-				std::cout << "Last Name : " << div->phonebook::getter_contact(i).getterSname() << std::endl;
-				std::cout << "Nick Name : " << div->phonebook::getter_contact(i).getterNname() << std::endl;
-				std::cout << "Phone number : " << div->phonebook::getter_contact(i).getterPnumber() << std::endl;
-				std::cout << "Dark Secret : " << div->phonebook::getter_contact(i).getterDsecret() << std::endl;
-			}
-		}
+		std::cout << "First Name : " << div->phonebook::getter_contact(stoi(al)).getterFname() << std::endl;
+		std::cout << "Last Name : " << div->phonebook::getter_contact(stoi(al)).getterSname() << std::endl;
+		std::cout << "Nick Name : " << div->phonebook::getter_contact(stoi(al)).getterNname() << std::endl;
+		std::cout << "Phone number : " << div->phonebook::getter_contact(stoi(al)).getterPnumber() << std::endl;
+		std::cout << "Dark Secret : " << div->phonebook::getter_contact(stoi(al)).getterDsecret() << std::endl;
 	}
+	else
+		std::cout << RED "Error contact not found" RESET << std::endl;
 }

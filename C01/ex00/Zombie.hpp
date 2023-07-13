@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/30 05:22:14 by mnassi            #+#    #+#             */
-/*   Updated: 2023/07/13 06:47:31 by mnassi           ###   ########.fr       */
+/*   Created: 2023/07/12 16:08:01 by mnassi            #+#    #+#             */
+/*   Updated: 2023/07/12 17:40:04 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef ZOMBIE_HPP
+#define ZOMBIE_HPP
+
 #include <iostream>
+#include <string>
+#define st std::string
 
-int main(int count, char **strings)
-{
-	int		j;
+class Zombie {
+	private :
+		st	name;
+	public :
+		Zombie();
+		Zombie( st nm );
+			void announce( void );
+		~Zombie();
+};
 
-	if (count == 1)
-	{
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << "\n";
-		return (0);
-	}
-	for (int i = 1; strings[i]; i++)
-	{
-		for (j = 0; strings[i][j]; j++)
-			std::cout << (char)toupper(strings[i][j]);
-	}
-	return (0);
-}
+Zombie*	newZombie( std::string name );
+void	randomChump( std::string name );
+
+#endif

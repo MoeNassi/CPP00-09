@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/30 05:22:14 by mnassi            #+#    #+#             */
-/*   Updated: 2023/07/13 06:47:31 by mnassi           ###   ########.fr       */
+/*   Created: 2023/07/12 16:16:53 by mnassi            #+#    #+#             */
+/*   Updated: 2023/07/12 17:47:26 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#include "Zombie.hpp"
 
-int main(int count, char **strings)
-{
-	int		j;
+Zombie::Zombie( st name ) {
+	this->name = name;
+}
+Zombie::Zombie() {
+	
+}
+Zombie::~Zombie() {
+	std::cout << this->name << " Got Destroyed" << std::endl;
+}
 
-	if (count == 1)
-	{
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << "\n";
-		return (0);
-	}
-	for (int i = 1; strings[i]; i++)
-	{
-		for (j = 0; strings[i][j]; j++)
-			std::cout << (char)toupper(strings[i][j]);
-	}
-	return (0);
+int main() {
+	Zombie	*ptr;
+	Zombie	s;
+
+	ptr = newZombie("Hamid");
+	ptr->announce();
+	delete ptr;
 }

@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 04:17:39 by mnassi            #+#    #+#             */
-/*   Updated: 2023/07/11 09:25:10 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/07/13 11:50:27 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int main()
 		if (i > 7)
 			i = 0;
 		if (!input.compare("SEARCH"))
-			search_contact(&div, i);
+			search_contact(&div);
 	}
 	return (0);
 }
