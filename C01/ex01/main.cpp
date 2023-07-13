@@ -20,7 +20,7 @@ void	Zombie::annonce(void) {
 int main() {
 	Zombie	*Zombies;
 	Zombies = zombieHorde(5, "Abdelmoula");
-	for (int index = 0; index < N; index++) {
+	for (int index = 0; index < N; index++)
 		Zombies->annonce();
-	}
+	delete[] Zombies;
 }
