@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   zombie.cpp                                         :+:      :+:    :+:   */
+/*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/12 16:18:34 by mnassi            #+#    #+#             */
-/*   Updated: 2023/07/13 13:25:47 by mnassi           ###   ########.fr       */
+/*   Created: 2023/07/13 13:30:20 by mnassi            #+#    #+#             */
+/*   Updated: 2023/07/13 14:28:36 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef ZOMBIE_HPP
+#define ZOMBIE_HPP
 
-Zombie::Zombie( st name ) {
-	this->name = name;
-}
+#include <iostream>
+#include <string>
+#define st std::string
 
-Zombie::Zombie() {
-	
-}
+class Zombie
+{
+	private:
+		st	name;
+	public:
+		Zombie();
+		Zombie(st name);
+		void	annonce(void);
+		void	set( st n );
+		~Zombie();
+};
 
-Zombie::~Zombie() {
-	std::cout << this->name << " Got Destroyed" << std::endl;
-}
+Zombie* zombieHorde( int N, std::string name );
 
-void Zombie::announce( void ) {
-	std::cout << this->name << ": BraiiiiiiinnnzzzZ..." << std::endl;
-}
+#endif
