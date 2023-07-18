@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   weapon.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/13 13:30:13 by mnassi            #+#    #+#             */
-/*   Updated: 2023/07/18 04:01:55 by mnassi           ###   ########.fr       */
+/*   Created: 2023/07/14 06:34:48 by mnassi            #+#    #+#             */
+/*   Updated: 2023/07/18 05:31:00 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
-#define N 20
+#include "weapon.hpp"
 
-int main() {
-	Zombie	*Zombies;
+Weapon::Weapon( st_ name ) {
+	this->type = name;
+}
 
-	Zombies = zombieHorde(N, "Abdelmoula");
-	for (int index = 0; index < N; index++) {
-		Zombies->annonce();
-	}
-	delete[] Zombies;
+Weapon::Weapon( ) {
+
+}
+
+const st_& Weapon::getType() {
+	return (type);
+}
+
+void	Weapon::setType( st_ setter) {
+	type = setter;
 }

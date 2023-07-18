@@ -1,21 +1,21 @@
-NAME = phonebook
+NAME = Human
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 CPP = c++
 
-SRC = phonebook.cpp contacts.cpp Main.cpp
+SRC = main.cpp weapon.cpp HumanA.cpp HumanB.cpp
 
-HEADER = phonebook.hpp contacts.hpp
+HEADER = weapon.hpp HumanA.hpp HumanB.hpp
 
 OBJ=$(SRC:.cpp=.o)
 
 all : $(NAME)
 
-$(NAME) : $(OBJ)
+$(NAME) : $(OBJ) $(HEADER)
 	$(CPP) $(CFLAGS) $(OBJ) -o $(NAME)
 
-%.o : %.cpp $(HEADER)
+%.o : %.cpp
 	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
 
 clean :

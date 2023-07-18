@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 13:30:02 by mnassi            #+#    #+#             */
-/*   Updated: 2023/07/13 14:34:01 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/07/18 04:01:16 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,9 @@ Zombie::Zombie() {
 }
 
 Zombie::~Zombie() {
-	std::cout << this->name << " Got Destroyed" << std::endl;	
+	std::cout << "Zombie : " << name << " Got Destroyed" << std::endl;	
+}
+
+void	Zombie::annonce(void) {
+	std::cout << name << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }

@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   HumanA.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/13 13:30:13 by mnassi            #+#    #+#             */
-/*   Updated: 2023/07/18 04:01:55 by mnassi           ###   ########.fr       */
+/*   Created: 2023/07/14 06:04:46 by mnassi            #+#    #+#             */
+/*   Updated: 2023/07/18 05:08:58 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
-#define N 20
+#include "HumanA.hpp"
 
-int main() {
-	Zombie	*Zombies;
+void	HumanA::attack() {
+	std::cout << name << " attacks with their " << weapon.getType() << std::endl;
+}
 
-	Zombies = zombieHorde(N, "Abdelmoula");
-	for (int index = 0; index < N; index++) {
-		Zombies->annonce();
-	}
-	delete[] Zombies;
+HumanA::HumanA( st_ nm, Weapon &weapon ) : name(nm), weapon(weapon) {
+}
+
+HumanA::~HumanA() {
 }

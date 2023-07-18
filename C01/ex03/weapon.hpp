@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   weapon.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/13 13:30:13 by mnassi            #+#    #+#             */
-/*   Updated: 2023/07/18 04:01:55 by mnassi           ###   ########.fr       */
+/*   Created: 2023/07/14 06:04:52 by mnassi            #+#    #+#             */
+/*   Updated: 2023/07/18 05:30:43 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
-#define N 20
+#ifndef WEAPON_HPP
+#define WEAPON_HPP
 
-int main() {
-	Zombie	*Zombies;
+#include <iostream>
+#include <string>
 
-	Zombies = zombieHorde(N, "Abdelmoula");
-	for (int index = 0; index < N; index++) {
-		Zombies->annonce();
-	}
-	delete[] Zombies;
-}
+#define st_ std::string
+
+class Weapon {
+	private :
+		st_ type;
+	public :
+		Weapon( );
+		Weapon( st_ name );
+		const st_& getType();
+		void	setType( st_ setter);
+};
+
+#endif

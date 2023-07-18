@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   HumanA.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/13 13:30:13 by mnassi            #+#    #+#             */
-/*   Updated: 2023/07/18 04:01:55 by mnassi           ###   ########.fr       */
+/*   Created: 2023/07/14 06:04:43 by mnassi            #+#    #+#             */
+/*   Updated: 2023/07/18 05:00:33 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
-#define N 20
+#include <iostream>
+#include <string>
+#include "weapon.hpp"
 
-int main() {
-	Zombie	*Zombies;
+#define st_ std::string
 
-	Zombies = zombieHorde(N, "Abdelmoula");
-	for (int index = 0; index < N; index++) {
-		Zombies->annonce();
-	}
-	delete[] Zombies;
-}
+class HumanA {
+	private:
+		st_		name;
+		Weapon	&weapon;
+	public:
+		HumanA( st_ nm, Weapon &weapon );
+		void	attack();
+		~HumanA();
+};
