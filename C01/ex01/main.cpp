@@ -15,6 +15,7 @@
 
 int main() {
 	Zombie	*Zombies;
+<<<<<<< HEAD
 
 	Zombies = zombieHorde(N, "Abdelmoula");
 	for (int index = 0; index < N; index++) {
@@ -22,3 +23,10 @@ int main() {
 	}
 	delete[] Zombies;
 }
+=======
+	Zombies = zombieHorde(5, "Abdelmoula");
+	for (int index = 0; index < N; index++)
+		Zombies->annonce();
+	delete[] Zombies;
+}
+>>>>>>> 01d56b82f34d038b7765e4dd04f80408bb40764a
