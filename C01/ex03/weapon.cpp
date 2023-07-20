@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 06:34:48 by mnassi            #+#    #+#             */
-/*   Updated: 2023/07/18 05:31:00 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/07/20 01:34:35 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ Weapon::Weapon( ) {
 
 }
 
-const st_& Weapon::getType() {
+const st_& Weapon::getType()  {
 	return (type);
 }
 
