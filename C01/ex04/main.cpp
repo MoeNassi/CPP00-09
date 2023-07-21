@@ -6,13 +6,14 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 02:28:57 by mnassi            #+#    #+#             */
-/*   Updated: 2023/07/20 06:31:42 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/07/21 07:39:46 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string>
 #include <iostream>
 #include <fstream>
+#include <algorithm>
 #define	st_	std::string
 
 void		location(char **args, std::ofstream &file, std::fstream &read) {
@@ -22,14 +23,14 @@ void		location(char **args, std::ofstream &file, std::fstream &read) {
 
 	replace = args[3];
 	search = args[2];
-    while (std::getline(read, line)) {
-        size_t pos = 0;
-        while ((pos = line.find(search, pos)) != std::string::npos) {
-            line = line.substr(0, pos) + replace + line.substr(pos + search.length());
-            pos += replace.length();
-        }
-        file << line << "\n";
-    }
+	while (std::getline(read, line)) {
+		size_t	index = 0;
+		while ((index = line.find(search, index)) != std::string::npos) {
+			line = line.substr(0, index) + replace + line.substr(search.length() + index);
+			index += replace.length();
+		}
+		file << line << std::endl;
+	}
 	file.close();
 }
 
@@ -39,13 +40,13 @@ int main(int argc, char **args) {
 	st_				filename;
 	st_				stock;
 
-	filename = "replace.";
-	std::ofstream	file(filename + args[1]);
 	i = 0;
 	if (argc != 4) {
 		std::cout << "Not enough arguments" << std::endl;
 		return (0);
 	}
+	filename = "replace.";
+	std::ofstream	file(filename + args[1]);
 	reading.open( args[1] );
 	if (!reading.is_open()) {
 		std::cout << "Error in fd" << std::endl;
