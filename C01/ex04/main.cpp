@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 02:28:57 by mnassi            #+#    #+#             */
-/*   Updated: 2023/07/21 07:39:46 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/08/07 11:48:59 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void		location(char **args, std::ofstream &file, std::fstream &read) {
 	search = args[2];
 	while (std::getline(read, line)) {
 		size_t	index = 0;
-		while ((index = line.find(search, index)) != std::string::npos) {
+		while (((index = line.find(search, index)) != std::string::npos && search.compare(""))) {
 			line = line.substr(0, index) + replace + line.substr(search.length() + index);
 			index += replace.length();
 		}

@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 08:24:08 by mnassi            #+#    #+#             */
-/*   Updated: 2023/07/21 11:34:15 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/07/22 08:31:39 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void Harl::error( void ) {
 
 void Harl::complain( std::string level ) {
 	void	(Harl::*ptr[5])(void);
-	st_	arr[4] = {"debug", "info", "warning", "error"};
 
 	ptr[1] = &Harl::debug;
 	ptr[2] = &Harl::info;

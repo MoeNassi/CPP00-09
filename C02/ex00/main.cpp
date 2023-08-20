@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanA.hpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/14 06:04:43 by mnassi            #+#    #+#             */
-/*   Updated: 2023/07/22 07:45:57 by mnassi           ###   ########.fr       */
+/*   Created: 2023/08/17 14:45:03 by mnassi            #+#    #+#             */
+/*   Updated: 2023/08/17 21:23:23 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	HUMANA_HPP
-#define	HUMANA_HPP
+#include "Fixed.hpp"
 
-#include <iostream>
-#include <string>
-#include "weapon.hpp"
-
-#define st_ std::string
-
-class HumanA {
-	private:
-		st_		name;
-		Weapon	&weapon;
-	public:
-		HumanA( st_ nm, Weapon &weapon );
-		void	attack();
-		~HumanA();
-};
-
-#endif
+int main()
+{
+	Fixed a;
+	Fixed b(a);
+	Fixed c;
+	c = b;
+	std::cout << b.getRawBits() << std::endl;
+	std::cout << c.getRawBits() << std::endl;
+	std::cout << c.getRawBits() << std::endl;
+}

@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 11:39:11 by mnassi            #+#    #+#             */
-/*   Updated: 2023/07/21 12:03:12 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/07/22 08:20:36 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ void Harl::error( void ) {
 }
 
 void Harl::complain( std::string level ) {
-	st_	arr[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 	int		i;
+	st_	arr[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 
 	i = 0;
 	while (i < 4 && level != arr[i])

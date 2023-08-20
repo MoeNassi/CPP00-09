@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 08:24:13 by mnassi            #+#    #+#             */
-/*   Updated: 2023/07/21 11:06:58 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/07/22 09:58:00 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 
 int main(int ac, char **av) {
 	Harl	ptr;
+	st_		nb;
 
-	if (ac != 2) {
+	nb = av[1];
+	if (ac != 2 || nb.length() > 1 || !isdigit(nb[0])) {
 		std::cout << "Arguments Error" << std::endl;
 		return (0);
 	}

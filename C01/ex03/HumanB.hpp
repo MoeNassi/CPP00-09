@@ -6,9 +6,12 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 06:04:48 by mnassi            #+#    #+#             */
-/*   Updated: 2023/07/20 01:49:49 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/07/22 07:46:13 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef	HUMANB_HPP
+#define	HUMANB_HPP
 
 #include <iostream>
 #include <string>
@@ -27,3 +30,5 @@ class HumanB {
 		void	setWeapon( Weapon &weapon );
 		~HumanB();
 };
+
+#endif
