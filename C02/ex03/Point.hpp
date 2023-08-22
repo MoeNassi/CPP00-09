@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Point.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/17 14:45:03 by mnassi            #+#    #+#             */
-/*   Updated: 2023/08/21 21:35:17 by mnassi           ###   ########.fr       */
+/*   Created: 2023/08/21 15:49:37 by mnassi            #+#    #+#             */
+/*   Updated: 2023/08/21 15:59:50 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef POINT_HPP
+#define POINT_HPP
 #include "Fixed.hpp"
 
-int main() {
-	Fixed a;
-	Fixed b( Fixed( 5.05f ) * Fixed( 2 ) );
-	std::cout << a << std::endl;
-	std::cout << ++a << std::endl;
-	std::cout << a << std::endl;
-	std::cout << a++ << std::endl;
-	std::cout << a << std::endl;
-	std::cout << b << std::endl;
-	std::cout << Fixed::max( a, b ) << std::endl;
-	return 0;
+class Point {
+	private :
+		Fixed const x;
+		Fixed const y;
+	public :
+		Point( void );
+		Point( float hori, float verti );
+		Fixed operator=(const Fixed &b);
+		~Point( void );
 }
+
+#endif
+
