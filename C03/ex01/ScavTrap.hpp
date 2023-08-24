@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 16:17:32 by mnassi            #+#    #+#             */
-/*   Updated: 2023/08/22 10:14:17 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/08/24 02:10:03 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,10 @@ class ScavTrap : public ClapTrap {
 		ScavTrap();
 		ScavTrap( st_ name );
 		ScavTrap( ScavTrap *copy );
+		void attack( const st_ &target );
 		void GuardGate( void );
 		~ScavTrap( void );
+		ScavTrap &operator=(const ScavTrap &b);
 };
 
 # endif

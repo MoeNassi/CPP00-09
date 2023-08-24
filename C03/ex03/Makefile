@@ -2,7 +2,7 @@ NAME = DiamondTrap
 
 CPP = c++
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 SRC = DiamondTrap.cpp FragTrap.cpp main.cpp ClapTrap.cpp ScavTrap.cpp
 
@@ -16,7 +16,7 @@ $(NAME) : $(OBJ) $(HEADER)
 	$(CPP) $(CFLAGS) $(OBJ) -o $(NAME)
 
 %.o : %.cpp
-	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
+	$(CPP) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
 
 clean :
 	rm -rf $(OBJ)

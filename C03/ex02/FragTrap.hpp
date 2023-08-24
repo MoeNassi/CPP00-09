@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 16:17:32 by mnassi            #+#    #+#             */
-/*   Updated: 2023/08/22 10:24:35 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/08/22 14:33:15 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ class FragTrap : public ClapTrap {
 		FragTrap( FragTrap *copy );
 		void highFivesGuys(void);
 		~FragTrap( void );
+		FragTrap &operator=(const FragTrap &b);
 };
 
 # endif

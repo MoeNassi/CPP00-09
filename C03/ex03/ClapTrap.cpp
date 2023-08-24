@@ -6,14 +6,16 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 16:21:37 by mnassi            #+#    #+#             */
-/*   Updated: 2023/08/22 10:09:59 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/08/23 22:09:54 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap() {
-	
+ClapTrap::ClapTrap() : name("MedAitSwa") {
+	Hit_Point = 10;
+	Energy_Point = 10;
+	Attack_Damage = 0;
 }
 
 ClapTrap::ClapTrap( st_ name ) {
@@ -51,6 +53,13 @@ void	ClapTrap::beRepaired(unsigned int amount) {
 	}
 	else
 		std::cout << RED "Not Enough Energy Point" RESET << std::endl;
+}
+
+ClapTrap &ClapTrap::operator=(const ClapTrap &b) {
+	std::cout << "Copy assignment operator called" << std::endl;
+	if (this != &b)
+		this->name = b.name;
+	return (*this);
 }
 
 ClapTrap::~ClapTrap() {

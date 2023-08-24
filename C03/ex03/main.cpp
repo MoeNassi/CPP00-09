@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 12:47:30 by mnassi            #+#    #+#             */
-/*   Updated: 2023/08/22 14:02:37 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/08/24 01:52:07 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 int main() {
 	ClapTrap john("John");
 	ClapTrap jim("Jim");
-	ClapTrap joe("Joe");
-	ScavTrap jane("Jane");
-	FragTrap joseph("Joseph");
-	DiamondTrap daniel("Daniel");
+	ClapTrap joe;
+	ScavTrap jane;
+	FragTrap joseph;
+	DiamondTrap	daniel;
 
 	john.attack("Marge");
 	john.attack("Bart");

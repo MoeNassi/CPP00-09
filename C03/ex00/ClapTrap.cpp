@@ -6,21 +6,23 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 16:21:37 by mnassi            #+#    #+#             */
-/*   Updated: 2023/08/22 10:15:38 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/08/24 00:35:22 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap( void ) {
-	
+ClapTrap::ClapTrap( void ) : name("MedAitSwa") {
+	std::cout << YELLOW "Default constructor Called" RESET << std::endl;
+	this->Hit_Point = 10;
+	this->Energy_Point = 10;
+	this->Attack_Damage = 0;
 }
-
 ClapTrap::ClapTrap( ClapTrap *copy ) {
 	*this = copy;
 }
 
-ClapTrap::ClapTrap( st_ &name ) {
+ClapTrap::ClapTrap( st_ name ) {
 	std::cout << YELLOW "Constructor Called" RESET << std::endl;
 	this->name = name;
 	Hit_Point = 10;
@@ -55,6 +57,13 @@ void	ClapTrap::beRepaired(unsigned int amount) {
 	}
 	else
 		std::cout << RED "Not Enough Energy Point" RESET << std::endl;
+}
+
+ClapTrap &ClapTrap::operator=(const ClapTrap &b) {
+	std::cout << "Copy assignment operator called" << std::endl;
+	if (this != &b)
+		this->name = b.name;
+	return (*this);
 }
 
 ClapTrap::~ClapTrap() {
