@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 18:01:33 by mnassi            #+#    #+#             */
-/*   Updated: 2023/08/24 01:36:31 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/08/26 11:51:00 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,5 @@ int main() {
 	jim.takeDamage(10);
 	joe.beRepaired(10);
 	joe.takeDamage(19);
+	joe.attack("mohammed");
 }

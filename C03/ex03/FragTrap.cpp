@@ -6,14 +6,14 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 16:21:37 by mnassi            #+#    #+#             */
-/*   Updated: 2023/08/24 01:52:29 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/08/26 12:09:52 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FragTrap.hpp"
 
 FragTrap::FragTrap( void ) : ClapTrap("MedAitSwa") {
-	std::cout << YELLOW "Default constructor Called" RESET << std::endl;
+	std::cout << YELLOW "FragTrap Default constructor Called" RESET << std::endl;
 	this->Hit_Point = 100;
 	this->Energy_Point = 100;
 	this->Attack_Damage = 30;
@@ -24,7 +24,7 @@ FragTrap::FragTrap( FragTrap *copy ) {
 }
 
 FragTrap::FragTrap( st_ name ) {
-	std::cout << YELLOW "Constructor Called" RESET << std::endl;
+	std::cout << YELLOW "FragTrap Constructor Called" RESET << std::endl;
 	this->name = name;
 	this->Hit_Point = 100;
 	this->Energy_Point = 100;

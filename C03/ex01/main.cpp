@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 18:01:33 by mnassi            #+#    #+#             */
-/*   Updated: 2023/08/24 01:37:06 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/08/26 11:58:49 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int main()
 	ClapTrap john;
 	ClapTrap jim("Jim");
 	ClapTrap joe("Joe");
-	ScavTrap jane;
+	ScavTrap jane("Jane");
 
 	john.attack("Marge");
 	john.attack("Bart");

@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 16:21:37 by mnassi            #+#    #+#             */
-/*   Updated: 2023/08/24 00:35:22 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/08/26 11:54:14 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,21 +31,27 @@ ClapTrap::ClapTrap( st_ name ) {
 }
 
 void	ClapTrap::attack( const st_ &target ) {
-	if (this->Energy_Point != 0) {
+	if (this->Energy_Point != 0 && this->Hit_Point > 0) {
 		std::cout << CYAN "ClapTrap " << this->name << RESET << " attacks " << CYAN << target << RESET << ", causing " << RED << this->Attack_Damage << " point of damage" RESET << std::endl;
 		this->Energy_Point--;
 		std::cout << BLUE "Energy left : " << this->Energy_Point << RESET << std::endl;
 	}
-	else
-		std::cout << RED "Not Enough Energy Point" RESET << std::endl;
+	else if (this->Energy_Point == 0)
+		std::cout << CYAN "ClapTrap " << this->name << RESET << RED " Does not have enough Energy Point" RESET << std::endl;
+	else if (this->Hit_Point == 0)
+		std::cout << RED "ClapTrap " << this->name << " is dead" RESET << std::endl;
 }
 
 void	ClapTrap::takeDamage(unsigned int amount) {
-	if ((int)amount >= 0) {
+	if ((int)amount >= 0 && this->Hit_Point > 0) {
 		std::cout << CYAN "ClapTrap " << this->name << RESET << " took " << RED << amount << " of the damage " RESET << std::endl;
 		this->Hit_Point -= amount;
+		if (this->Hit_Point < 0)
+			this->Hit_Point = 0;
 		std::cout << BLUE "HP Left : " << this->Hit_Point << RESET << std::endl;
 	}
+	if (this->Hit_Point == 0)
+		std::cout << RED "ClapTrap " << this->name << " is dead" RESET << std::endl;
 }
 
 void	ClapTrap::beRepaired(unsigned int amount) {
