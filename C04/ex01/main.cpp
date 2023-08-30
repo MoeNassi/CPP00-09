@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/26 17:42:32 by mnassi            #+#    #+#             */
-/*   Updated: 2023/08/30 14:08:57 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/08/30 17:31:24 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,21 @@
 #include "Cat.hpp"
 #include "WrongCat.hpp"
 
-
 int main()
 {
-    const Animal* meta = new Animal();
-    const Animal* j = new Dog();
-    const Animal* i = new Cat();
-    const WrongAnimal * k = new WrongCat();
+    Animal* meta[8];
+    int     index;
     
-    std::cout << i->getType() << " " << std::endl;
-    std::cout << j->getType() << " " << std::endl;
-    i->makeSound(); //will output the cat sound!
-    j->makeSound();
-    meta->makeSound();
-    std::cout << CYAN "Wrongcat Test" RESET << std::endl;
-    std::cout << k->getType() << " " << std::endl;
-    k->makeSound();
+    index = -1;
+    while (++index < 8)
+    {
+        if (index < 4)
+            meta[index] = new Dog();
+        else
+            meta[index] = new Cat();
+    }
+    *meta[0] = *meta[7];
+    index = -1;
+    while (++index < 8)
+        delete meta[index];
 }

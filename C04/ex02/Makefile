@@ -1,14 +1,14 @@
-NAME = Animal
+NAME = Animal_V2
 
 CPP = c++
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRC = Dog.cpp main.cpp Cat.cpp Animal.cpp WrongAnimal.cpp WrongCat.cpp
+SRC = Dog.cpp main.cpp Cat.cpp Animal.cpp WrongAnimal.cpp WrongCat.cpp Brain.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
-HEADER = Dog.hpp Cat.hpp Animal.hpp WrongAnimal.hpp WrongCat.hpp
+HEADER = Dog.hpp Cat.hpp Animal.hpp WrongAnimal.hpp WrongCat.hpp Brain.hpp
 
 all : $(NAME)
 
