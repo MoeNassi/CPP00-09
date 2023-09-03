@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/26 17:44:37 by mnassi            #+#    #+#             */
-/*   Updated: 2023/08/30 17:25:40 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/09/01 17:11:39 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 
 Cat &Cat::operator=(const Cat &b) {
 	std::cout << RED "Cat Copy assignment operator called" RESET << std::endl;
-	if (this != &b)
+	if (this != &b) {
+		delete idea;
 		this->type = b.type;
+	}
 	return (*this);
 }
 
@@ -32,6 +34,7 @@ Cat::Cat( st_ set ) {
 }
 
 Cat::Cat( Cat *obj ) {
+	idea = NULL;
 	std::cout << RED "Cat Copy Constructor Called" RESET << std::endl;
 	*this = obj;
 }

@@ -6,18 +6,19 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 12:40:03 by mnassi            #+#    #+#             */
-/*   Updated: 2023/09/02 13:22:50 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/09/03 14:07:26 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cure.hpp"
 
 cure::cure( void ) {
-	std::cout << "Cure Default Constructor Called" << std::endl;
+	std::cout << CYAN "Cure Default Constructor Called" RESET << std::endl;
+	type = "cure";
 }
 
 cure::cure(st_ const &type) {
-	std::cout << "Constructor Called" << std::endl;
+	std::cout << CYAN "Constructor Called" RESET << std::endl;
 	this->type = type;
 }
 
@@ -31,5 +32,5 @@ cure* cure::clone() const {
 }
 
 void cure::use(ICharacter &target) {
-	std::cout << "heals " << target << " wounds" << std::endl;
+	std::cout << "* heals " << target.getName() << " wounds *" << std::endl;
 }

@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 12:40:18 by mnassi            #+#    #+#             */
-/*   Updated: 2023/09/02 18:20:46 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/09/03 13:59:11 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 #include "Character.hpp"
 #include "MateriaSource.hpp"
 
-int main() {
+int main() 
+{
 	IMateriaSource* src = new MateriaSource();
 	src->learnMateria(new ice());
 	src->learnMateria(new cure());
@@ -32,5 +33,4 @@ int main() {
 	delete bob;
 	delete me;
 	delete src;
-	return 0;
 }

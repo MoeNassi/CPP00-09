@@ -6,26 +6,28 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 13:08:22 by mnassi            #+#    #+#             */
-/*   Updated: 2023/09/02 18:18:32 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/09/03 14:06:41 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Character.hpp"
 
 Character::Character( void ) {
-	std::cout << "Character Constructor Called" << std::endl;	
+	std::cout << GREEN "Character Constructor Called" RESET << std::endl;	
+	this->name = "hh";
 	for (int i = 0; i < 4 ; i++)
 		this->slots[i] = NULL;
-	this->name = "hh";
 }
 
 Character::Character( st_ type ) {
-	std::cout << "Character Constructor Called" << std::endl;	
+	std::cout << GREEN "Character Constructor Called" RESET << std::endl;
+	for (int i = 0; i < 4 ; i++)
+		this->slots[i] = NULL;
 	this->name = type;
 }
 
 Character::Character( Character *copy ) {
-	std::cout << "Character copy constructor called" << std::endl;
+	std::cout << GREEN "Character copy constructor called" RESET << std::endl;
 	*this = copy;
 }
 
@@ -39,12 +41,16 @@ Character &Character::operator=(const Character &b) {
 }
 
 st_ const &Character::getName() const {
-	return (slots[0]->getType());
+	return (this->name);
 }
 
 void Character::equip(AMateria* m) {
-	for (int i = 0; slots[i] == NULL; i++) {
-		slots[i] = m;
+	
+	for (int i = 0; i < 4; i++) {
+		if (slots[i] == NULL) {
+			slots[i] = m;
+			break ;
+		}
 	}
 }
 
@@ -53,7 +59,7 @@ void Character::unequip(int idx) {
 		slots[idx] = NULL;
 }
 
-void Character::use(int idx, ICharacter& target) {
+void Character::use(int idx, ICharacter& target) {	
 	if (idx >= 0 && idx < 4 && slots[idx])
 		slots[idx]->use(target);
 }

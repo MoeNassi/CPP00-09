@@ -6,19 +6,19 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 12:55:16 by mnassi            #+#    #+#             */
-/*   Updated: 2023/09/02 16:33:58 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/09/03 14:07:06 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Ice.hpp"
 
 ice::ice( void ) {
-	std::cout << "Ice Default Constructor Called" << std::endl;
-	this->type = "Default";
+	std::cout << BLUE "Ice Default Constructor Called" RESET << std::endl;
+	this->type = "ice";
 }
 
 ice::ice(st_ const &type) {
-	std::cout << "Constructor Called" << std::endl;
+	std::cout << BLUE "Constructor Called" RESET << std::endl;
 	this->type = type;
 }
 
@@ -32,5 +32,5 @@ ice* ice::clone() const {
 }
 
 void ice::use(ICharacter &target) {
-	std::cout << "heals " << target.getName() << " wounds" << std::endl;
+	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
 }
