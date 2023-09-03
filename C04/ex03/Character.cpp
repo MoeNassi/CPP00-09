@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 13:08:22 by mnassi            #+#    #+#             */
-/*   Updated: 2023/09/03 14:06:41 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/09/03 18:38:29 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,8 @@ void Character::use(int idx, ICharacter& target) {
 
 Character::~Character() {
 	std::cout << "Character Destructor Called" << std::endl;
+	for (int i = 0; i < 4; i++) {
+		if (this->slots[i] != NULL)
+			delete slots[i];
+	}
 }

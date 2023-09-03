@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 12:33:06 by mnassi            #+#    #+#             */
-/*   Updated: 2023/09/02 18:15:45 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/09/03 18:39:03 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,8 @@ std::ostream &operator<<(std::ostream& os, const ICharacter& dt) {
 
 void AMateria::use(ICharacter& target) {
 	std::cout << "Nothing " << target << std::endl;
+}
+
+AMateria::~AMateria(void) {
+	std::cout << "Character Destructor Called" << std::endl;
 }

@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 12:40:03 by mnassi            #+#    #+#             */
-/*   Updated: 2023/09/03 14:07:26 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/09/03 17:57:51 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,13 @@ st_ const &cure::getType() const {
 }
 
 cure* cure::clone() const {
-	cure *clone = new cure();
-	return (clone);
+	return (new cure());
 }
 
 void cure::use(ICharacter &target) {
 	std::cout << "* heals " << target.getName() << " wounds *" << std::endl;
+}
+
+cure::~cure() {
+	std::cout << RED "cure Destructor Called" RESET << std::endl;
 }

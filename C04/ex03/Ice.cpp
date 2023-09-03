@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 12:55:16 by mnassi            #+#    #+#             */
-/*   Updated: 2023/09/03 14:07:06 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/09/03 17:57:40 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,13 @@ st_ const &ice::getType() const {
 }
 
 ice* ice::clone() const {
-	ice *clone = new ice();
-	return (clone);
+	return (new ice());
 }
 
 void ice::use(ICharacter &target) {
 	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
+}
+
+ice::~ice( void ) {
+	std::cout << RED "ice Destructor Called" RESET << std::endl;
 }

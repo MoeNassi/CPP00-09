@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 12:37:42 by mnassi            #+#    #+#             */
-/*   Updated: 2023/09/02 13:22:41 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/09/03 17:47:03 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ class cure : public AMateria
 		st_ const & getType() const; //Returns the materia type
 		cure* clone() const;
 		void use(ICharacter& target);
+		~cure();
 };
 
 #endif

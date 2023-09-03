@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 12:33:01 by mnassi            #+#    #+#             */
-/*   Updated: 2023/09/02 18:07:32 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/09/03 18:36:39 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ class AMateria
 		virtual AMateria* clone() const = 0;
 		AMateria &operator=(const AMateria &b);
 		virtual void use(ICharacter& target);
+		virtual ~AMateria(void);
 };
 
 std::ostream &operator<<(std::ostream& os, const ICharacter& dt);

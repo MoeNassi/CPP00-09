@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 12:39:21 by mnassi            #+#    #+#             */
-/*   Updated: 2023/09/02 18:01:03 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/09/03 17:48:02 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ class ice : public AMateria
 		st_ const & getType() const; //Returns the materia type
 		ice* clone() const;
 		void use(ICharacter& target);
+		~ice();
 };
 
 #endif
