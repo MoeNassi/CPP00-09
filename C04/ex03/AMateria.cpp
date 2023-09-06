@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 12:33:06 by mnassi            #+#    #+#             */
-/*   Updated: 2023/09/03 18:39:03 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/09/06 13:48:22 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@ AMateria::AMateria( void ) : type("Default") {
 AMateria::AMateria(st_ const &type) {
 	std::cout << RED "Constructor Called" RESET << std::endl;
 	this->type = type;
+}
+
+AMateria::AMateria(AMateria &copy) {
+	std::cout << RED "Constructor Called" RESET << std::endl;
+	this->type = copy.type;
 }
 
 st_ const &AMateria::getType() const {

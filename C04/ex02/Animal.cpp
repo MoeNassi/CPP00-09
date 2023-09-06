@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/26 17:00:05 by mnassi            #+#    #+#             */
-/*   Updated: 2023/09/02 13:17:55 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/09/06 16:39:22 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,11 @@ Animal::Animal( st_ set ) : type(set) {
 	std::cout << RED "Default Constructor Called" RESET << std::endl;
 }
 
+Animal::Animal( const Animal &obj ) {
+	std::cout << RED "Copy Constructor Called" RESET << std::endl;
+	*this = obj;
+}
+
 Animal::~Animal() {
 	std::cout << RED "Destructor Called" RESET << std::endl;
 }
@@ -35,3 +40,6 @@ st_		Animal::getType( void ) const {
 	return (this->type);
 }
 
+void	Animal::makeSound() const {
+	std::cout << BLUE "Aaaaaaaghhhhhhh" RESET << std::endl;
+}

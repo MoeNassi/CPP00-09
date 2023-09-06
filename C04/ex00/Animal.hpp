@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/26 17:00:00 by mnassi            #+#    #+#             */
-/*   Updated: 2023/08/29 18:36:27 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/09/06 15:50:41 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,11 @@ class Animal {
 	public :
 		Animal( void );
 		Animal( st_ set );
-		Animal( Animal *obj );
+		Animal( const Animal &obj );
 		Animal &operator=(const Animal &b);
 		st_		getType( void ) const;
 		virtual void makeSound() const ;
-		~Animal();
+		virtual ~Animal();
 	protected :
 		st_	type;
 };

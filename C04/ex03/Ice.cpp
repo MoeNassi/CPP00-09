@@ -6,34 +6,46 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 12:55:16 by mnassi            #+#    #+#             */
-/*   Updated: 2023/09/03 17:57:40 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/09/06 16:10:35 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Ice.hpp"
 
-ice::ice( void ) {
+Ice::Ice( void ) {
 	std::cout << BLUE "Ice Default Constructor Called" RESET << std::endl;
-	this->type = "ice";
+	this->type = "Ice";
 }
 
-ice::ice(st_ const &type) {
-	std::cout << BLUE "Constructor Called" RESET << std::endl;
+Ice::Ice( Ice &copy ) {
+	std::cout << BLUE "Ice copy Constructor Called" RESET << std::endl;
+	this->type = copy.type;
+}
+
+Ice::Ice(st_ const &type) {
+	std::cout << BLUE "Ice Constructor Called" RESET << std::endl;
 	this->type = type;
 }
 
-st_ const &ice::getType() const {
+st_ const &Ice::getType() const {
 	return (type);
 }
 
-ice* ice::clone() const {
-	return (new ice());
+AMateria* Ice::clone() const {
+	return (new Ice());
 }
 
-void ice::use(ICharacter &target) {
-	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
+Ice &Ice::operator=(const Ice &b) {
+	std::cout << RED "Copy assignment operator called" RESET << std::endl;
+	if (this != &b)
+		this->type = b.type;
+	return (*this);
 }
 
-ice::~ice( void ) {
-	std::cout << RED "ice Destructor Called" RESET << std::endl;
+void Ice::use(ICharacter &target) {
+	std::cout << "* shoots an Ice bolt at " << target.getName() << " *" << std::endl;
+}
+
+Ice::~Ice( void ) {
+	std::cout << RED "Ice Destructor Called" RESET << std::endl;
 }

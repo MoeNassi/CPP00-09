@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 13:04:46 by mnassi            #+#    #+#             */
-/*   Updated: 2023/09/03 18:36:07 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/09/06 13:46:58 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class Character : public ICharacter
 	public :
 		Character( void );
 		Character( st_ type );
-		Character( Character *copy );
+		Character( Character &copy );
 		st_ const & getName() const;
 		void equip(AMateria* m);
 		void unequip(int idx);

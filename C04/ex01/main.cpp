@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/26 17:42:32 by mnassi            #+#    #+#             */
-/*   Updated: 2023/09/01 17:20:01 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/09/06 14:37:15 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,19 @@
 
 int main()
 {
-    Animal* meta[8];
+    Animal* meta[20];
     int     index;
     
     index = -1;
-    while (++index < 8)
+    while (++index < 20)
     {
-        if (index < 4)
+        if (index < 10)
             meta[index] = new Dog();
         else
             meta[index] = new Cat();
     }
-    *meta[0] = *meta[7];
+    // *meta[0] = *meta[20];
     index = -1;
-    while (++index < 8)
+    while (++index < 20)
         delete meta[index];
 }

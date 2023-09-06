@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/26 17:44:37 by mnassi            #+#    #+#             */
-/*   Updated: 2023/09/01 17:11:39 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/09/06 16:35:13 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ Cat &Cat::operator=(const Cat &b) {
 	std::cout << RED "Cat Copy assignment operator called" RESET << std::endl;
 	if (this != &b) {
 		delete idea;
+		idea = new Brain();
 		this->type = b.type;
 	}
 	return (*this);
@@ -33,7 +34,7 @@ Cat::Cat( st_ set ) {
 	this->type = set;
 }
 
-Cat::Cat( Cat *obj ) {
+Cat::Cat( const Cat &obj ) {
 	idea = NULL;
 	std::cout << RED "Cat Copy Constructor Called" RESET << std::endl;
 	*this = obj;

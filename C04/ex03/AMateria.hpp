@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 12:33:01 by mnassi            #+#    #+#             */
-/*   Updated: 2023/09/03 18:36:39 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/09/06 13:45:22 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ class AMateria
 	public:
 		AMateria( void );
 		AMateria(st_ const & type);
+		AMateria(AMateria &type);
 		st_ const & getType() const;
 		virtual AMateria* clone() const = 0;
 		AMateria &operator=(const AMateria &b);

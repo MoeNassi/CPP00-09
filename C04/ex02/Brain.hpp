@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 14:30:06 by mnassi            #+#    #+#             */
-/*   Updated: 2023/08/30 14:44:48 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/09/06 16:30:43 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ class Brain {
 	public:
 		Brain( void );
 		Brain( st_ idea );
-		Brain( Brain *copy );
+		Brain &operator=(const Brain &b);
+		Brain( const Brain &copy );
 		~Brain();
 };
 

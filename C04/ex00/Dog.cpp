@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/26 17:44:13 by mnassi            #+#    #+#             */
-/*   Updated: 2023/08/29 18:33:43 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/09/06 16:26:00 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ Dog::Dog( st_ type ) {
 	this->type = type;
 }
 
-Dog::Dog( Dog *obj ) {
+Dog::Dog( const Dog &obj ) {
 	std::cout << RED "Dog Copy Constructor Called" RESET << std::endl;
 	*this = obj;
 }

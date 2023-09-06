@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/26 17:44:37 by mnassi            #+#    #+#             */
-/*   Updated: 2023/08/29 18:33:51 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/09/06 16:26:17 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ Cat::Cat( st_ set ) {
 	this->type = set;
 }
 
-Cat::Cat( Cat *obj ) {
+Cat::Cat( const Cat &obj ) {
 	std::cout << RED "Cat Copy Constructor Called" RESET << std::endl;
 	*this = obj;
 }

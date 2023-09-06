@@ -1,39 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cure.cpp                                           :+:      :+:    :+:   */
+/*   cure.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 12:40:03 by mnassi            #+#    #+#             */
-/*   Updated: 2023/09/03 17:57:51 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/09/06 13:50:53 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cure.hpp"
 
-cure::cure( void ) {
+Cure::Cure( void ) {
 	std::cout << CYAN "Cure Default Constructor Called" RESET << std::endl;
-	type = "cure";
+	type = "Cure";
 }
 
-cure::cure(st_ const &type) {
-	std::cout << CYAN "Constructor Called" RESET << std::endl;
+Cure::Cure( Cure &copy ) {
+	std::cout << CYAN "Cure copy Constructor Called" RESET << std::endl;
+	this->type = copy.type;
+}
+
+Cure::Cure(st_ const &type) {
+	std::cout << CYAN "cure Constructor Called" RESET << std::endl;
 	this->type = type;
 }
 
-st_ const &cure::getType() const {
+st_ const &Cure::getType() const {
 	return (type);
 }
 
-cure* cure::clone() const {
-	return (new cure());
+Cure* Cure::clone() const {
+	return (new Cure());
 }
 
-void cure::use(ICharacter &target) {
+Cure &Cure::operator=(const Cure &b) {
+	std::cout << RED "Copy assignment operator called" RESET << std::endl;
+	if (this != &b)
+		this->type = b.type;
+	return (*this);
+}
+
+void Cure::use(ICharacter &target) {
 	std::cout << "* heals " << target.getName() << " wounds *" << std::endl;
 }
 
-cure::~cure() {
-	std::cout << RED "cure Destructor Called" RESET << std::endl;
+Cure::~Cure() {
+	std::cout << RED "Cure Destructor Called" RESET << std::endl;
 }

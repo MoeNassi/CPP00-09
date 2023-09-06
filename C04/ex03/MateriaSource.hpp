@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 17:38:48 by mnassi            #+#    #+#             */
-/*   Updated: 2023/09/03 13:05:58 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/09/06 13:52:40 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,9 @@ class MateriaSource : public IMateriaSource {
 	public :
 		MateriaSource( void );
 		void learnMateria(AMateria*);
+		MateriaSource( MateriaSource &copy );
 		AMateria* createMateria(std::string const & type);
+		MateriaSource &operator=(const MateriaSource &b);
 		~MateriaSource();
 };
 

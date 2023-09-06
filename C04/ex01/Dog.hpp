@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/26 17:38:43 by mnassi            #+#    #+#             */
-/*   Updated: 2023/08/30 14:42:05 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/09/06 16:33:27 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class Dog : public Animal {
 	public :
 		Dog( void );
 		Dog( st_ type );
-		Dog( Dog *copy );
+		Dog( const Dog &copy );
 		Dog &operator=(const Dog &b);
 		void	makeSound() const;
 		~Dog( void );

@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/26 17:00:05 by mnassi            #+#    #+#             */
-/*   Updated: 2023/08/29 18:38:08 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/09/06 15:51:06 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ Animal::Animal( st_ set ) : type(set) {
 	std::cout << RED "Default Constructor Called" RESET << std::endl;
 }
 
-Animal::Animal( Animal *obj ) {
+Animal::Animal( const Animal &obj ) {
 	std::cout << RED "Copy Constructor Called" RESET << std::endl;
-	*this = obj;
+	this->type = obj.type;
 }
 
 Animal::~Animal() {
