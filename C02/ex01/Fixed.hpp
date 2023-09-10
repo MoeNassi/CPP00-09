@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 14:45:24 by mnassi            #+#    #+#             */
-/*   Updated: 2023/08/20 14:20:39 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/08/22 16:03:25 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@
 #include <string>
 #include <ostream>
 
-class Fixed
-{
+class Fixed {
 private:
 	int stock;
 	static const int eight_bits;

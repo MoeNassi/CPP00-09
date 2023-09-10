@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 12:04:10 by mnassi            #+#    #+#             */
-/*   Updated: 2023/08/22 14:38:15 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/08/26 20:31:08 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ class DiamondTrap : public ScavTrap, public FragTrap {
 		DiamondTrap( DiamondTrap *copy );
 		void whoAmI();
 		~DiamondTrap();
+		void attack( const st_ &target );
 		DiamondTrap &operator=(const DiamondTrap &b);
 };
 

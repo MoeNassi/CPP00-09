@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 17:38:30 by mnassi            #+#    #+#             */
-/*   Updated: 2023/09/06 16:14:43 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/09/08 16:36:09 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,9 @@ MateriaSource::MateriaSource( void ) {
 	}
 }
 
-MateriaSource::MateriaSource( MateriaSource &copy ) {
+MateriaSource::MateriaSource( const MateriaSource &copy ) {
 	std::cout << RED "MateriaSource Default Constructor" RESET << std::endl;
-	for (int i = 0; i < 4; i++) {
-		slots[i] = copy.slots[i];
-	}
+	*this = copy;
 }
 
 void	MateriaSource::learnMateria(AMateria *copy) {
@@ -49,7 +47,9 @@ MateriaSource &MateriaSource::operator=(const MateriaSource &b) {
 	std::cout << RED "Copy assignment operator called" RESET << std::endl;
 	if (this != &b) {
 		for (int i = 0; i < 4; i++)
-		{
+		{	
+				delete slots[i];
+				slots[i] = NULL;
 			if (b.slots[i] != NULL)
 				slots[i] = b.slots[i]->clone();
 		}

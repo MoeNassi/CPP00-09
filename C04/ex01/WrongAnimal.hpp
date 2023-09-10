@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 13:45:07 by mnassi            #+#    #+#             */
-/*   Updated: 2023/09/06 16:35:29 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/09/08 14:29:01 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ class WrongAnimal {
 		WrongAnimal( st_ type );
 		WrongAnimal( const WrongAnimal &copy );
 		st_		getType( void ) const;
-		virtual void	makeSound() const;
+		void	makeSound() const;
 		WrongAnimal &operator=(const WrongAnimal &b);
 		~WrongAnimal();
 };

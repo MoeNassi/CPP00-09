@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 14:48:11 by mnassi            #+#    #+#             */
-/*   Updated: 2023/08/21 14:50:21 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/08/22 18:43:41 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ Fixed Fixed::operator*(const Fixed &b) {
 }
 
 Fixed Fixed::operator+(const Fixed &b) {
+
 	return (Fixed(this->stock + b.stock));
 }
 
@@ -130,13 +131,13 @@ bool Fixed::operator==(const Fixed &rightnode) {
 	return (this->stock == rightnode.stock);
 }
 
-Fixed	Fixed::min(const Fixed &first, const Fixed &sec) {
+const Fixed	&Fixed::min(const Fixed &first, const Fixed &sec) {
 	if (first.stock < sec.stock)
 		return (first);
 	return (sec);
 }
 
-Fixed	Fixed::max(const Fixed &first, const Fixed &sec) {
+const Fixed	&Fixed::max(const Fixed &first, const Fixed &sec) {
 	if (first.stock < sec.stock)
 		return (sec);
 	return (first);

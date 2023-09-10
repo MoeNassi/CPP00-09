@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 12:03:42 by mnassi            #+#    #+#             */
-/*   Updated: 2023/08/26 12:39:53 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/08/26 20:34:57 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 
 DiamondTrap::DiamondTrap( void ) : ClapTrap("MedAitSwa_clap_name") {
 	std::cout << YELLOW "Diamond Default constructor Called" RESET << std::endl;
-	this->FragTrap::Hit_Point = 100;
-	this->FragTrap::Energy_Point = 50;
-	this->FragTrap::Attack_Damage = 30;
+	this->Hit_Point = FragTrap::Hit_Point;
+	this->Energy_Point = ScavTrap::Energy_Point;
+	this->Attack_Damage = FragTrap::Attack_Damage;
 }
 
 DiamondTrap::DiamondTrap( st_ name ) : ClapTrap(name + "_clap_name"), ScavTrap(), FragTrap() {
 	std::cout << YELLOW "Constructor Called" RESET << std::endl;
-	this->FragTrap::Hit_Point = 100;
-	this->FragTrap::Energy_Point = 50;
-	this->FragTrap::Attack_Damage = 30;
+	this->Hit_Point = FragTrap::Hit_Point;
+	this->Energy_Point = ScavTrap::Energy_Point;
+	this->Attack_Damage = FragTrap::Attack_Damage;
 }
 
 DiamondTrap::DiamondTrap( DiamondTrap *copy ) {
@@ -43,4 +43,10 @@ DiamondTrap &DiamondTrap::operator=(const DiamondTrap &b) {
 
 DiamondTrap::~DiamondTrap( void ) {
 	std::cout << YELLOW "Destructor Called" RESET << std::endl;
+}
+
+		 
+void DiamondTrap::attack( const st_ &target )
+{
+	ScavTrap::attack(target);
 }

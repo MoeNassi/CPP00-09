@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 12:55:16 by mnassi            #+#    #+#             */
-/*   Updated: 2023/09/06 16:10:35 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/09/08 16:19:33 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 Ice::Ice( void ) {
 	std::cout << BLUE "Ice Default Constructor Called" RESET << std::endl;
-	this->type = "Ice";
+	this->type = "ice";
 }
 
 Ice::Ice( Ice &copy ) {

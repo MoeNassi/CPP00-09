@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/26 17:44:13 by mnassi            #+#    #+#             */
-/*   Updated: 2023/09/06 16:39:44 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/09/08 16:41:22 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 Dog &Dog::operator=(const Dog &b) {
 	std::cout << RED "Dog Copy assignment operator called" RESET << std::endl;
 	if (this != &b) {
-		delete idea;
-		this->idea = new Brain();
+		delete	idea;
+		idea = new Brain(*b.idea);
 		this->type = b.type;
 	}
 	return (*this);

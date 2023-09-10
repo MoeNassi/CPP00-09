@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cure.cpp                                           :+:      :+:    :+:   */
+/*   Cure.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 12:40:03 by mnassi            #+#    #+#             */
-/*   Updated: 2023/09/06 13:50:53 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/09/08 16:19:42 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 Cure::Cure( void ) {
 	std::cout << CYAN "Cure Default Constructor Called" RESET << std::endl;
-	type = "Cure";
+	type = "cure";
 }
 
 Cure::Cure( Cure &copy ) {
@@ -31,7 +31,7 @@ st_ const &Cure::getType() const {
 	return (type);
 }
 
-Cure* Cure::clone() const {
+AMateria* Cure::clone() const {
 	return (new Cure());
 }
 

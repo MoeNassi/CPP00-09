@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 17:38:48 by mnassi            #+#    #+#             */
-/*   Updated: 2023/09/06 13:52:40 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/09/08 16:26:46 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ class MateriaSource : public IMateriaSource {
 		AMateria	*slots[4];
 	public :
 		MateriaSource( void );
-		void learnMateria(AMateria*);
-		MateriaSource( MateriaSource &copy );
+		void learnMateria(AMateria *copy);
+		MateriaSource( const MateriaSource &copy );
 		AMateria* createMateria(std::string const & type);
 		MateriaSource &operator=(const MateriaSource &b);
 		~MateriaSource();

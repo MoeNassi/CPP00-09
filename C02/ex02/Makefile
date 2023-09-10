@@ -2,7 +2,7 @@ NAME = Fixed
 
 CPP = c++
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 SRC = Fixed.cpp main.cpp
 
@@ -12,11 +12,11 @@ HEADER = Fixed.hpp
 
 all : $(NAME)
 
-$(NAME) : $(OBJ) $(HEADER)
+$(NAME) : $(OBJ)
 	$(CPP) $(CFLAGS) $(OBJ) -o $(NAME)
 
-%.o : %.cpp
-	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
+%.o : %.cpp $(HEADER)
+	$(CPP) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
 
 clean :
 	rm -rf $(OBJ)

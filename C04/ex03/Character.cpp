@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 13:08:22 by mnassi            #+#    #+#             */
-/*   Updated: 2023/09/06 16:15:43 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/09/08 16:39:38 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ Character::Character( st_ type ) {
 Character::Character( Character &copy ) : name(copy.name) {
 	std::cout << GREEN "Character copy constructor called" RESET << std::endl;
 	for (int i = 0; i < 4 ; i++)
-		this->slots[i] = copy.slots[i];
+		this->slots[i] = copy.slots[i]->clone();
 }
 
 Character &Character::operator=(const Character &b) {

@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 14:45:24 by mnassi            #+#    #+#             */
-/*   Updated: 2023/08/21 14:50:16 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/08/22 16:19:23 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,9 @@ public:
 
 	static Fixed &min(Fixed &first, Fixed &sec);
 	static Fixed &max(Fixed &first, Fixed &sec);
-	static Fixed min(const Fixed &first, const Fixed &sec);
-	static Fixed max(const Fixed &first, const Fixed &sec);
+
+	static const Fixed	&max(const Fixed &first, const Fixed &sec);
+	static const Fixed	&min(const Fixed &first, const Fixed &sec);
 
 	Fixed operator=(const Fixed &b);
 	Fixed operator+(const Fixed &b);
