@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 17:38:30 by mnassi            #+#    #+#             */
-/*   Updated: 2023/09/08 16:36:09 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/09/11 17:01:07 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ MateriaSource &MateriaSource::operator=(const MateriaSource &b) {
 	if (this != &b) {
 		for (int i = 0; i < 4; i++)
 		{	
-				delete slots[i];
-				slots[i] = NULL;
+			// delete slots[i];
+			// slots[i] = NULL;
 			if (b.slots[i] != NULL)
 				slots[i] = b.slots[i]->clone();
 		}

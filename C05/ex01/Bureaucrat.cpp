@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 13:47:16 by mnassi            #+#    #+#             */
-/*   Updated: 2023/09/10 18:53:45 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/09/11 18:47:43 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,18 @@ const char *Bureaucrat::GradeTooLowException::what() const throw() {
 	return ("Grade Is Too Low");
 }
 
+void	Bureaucrat::signForm(Form &grades) {
+	try {
+		grades.beSigned(*this);
+	}
+	catch(std::exception &e) {
+		std::cout << this->get_name() << " couldn't sign " << grades.get_name() << " because " << e.what();
+		return ;
+	}
+	std::cout << this->get_name() << " signed " << grades.get_name();
+}
+
+
 const char *Bureaucrat::GradeTooHighException::what() const throw() {
 	return ("Grade Is Too High");
 }
@@ -62,7 +74,7 @@ void	Bureaucrat::set_grade( int grade_ ) {
 	}
 }
 
-const st_	Bureaucrat::get_name( void ) const {
+st_	Bureaucrat::get_name( void ) const {
 	return (name);
 }
 

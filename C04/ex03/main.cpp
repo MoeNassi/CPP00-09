@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 12:40:18 by mnassi            #+#    #+#             */
-/*   Updated: 2023/09/11 14:30:40 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/09/11 17:03:08 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,21 @@
 #include "Character.hpp"
 #include "MateriaSource.hpp"
 
+void ff() {
+	system("leaks Go_Crazy");
+}
+
 int main()
 {
+	atexit(ff);
 	IMateriaSource* src = new MateriaSource();
-	IMateriaSource* src1 = new MateriaSource();
 	src->learnMateria(new Ice());
 	src->learnMateria(new Cure());
 	ICharacter* me = new Character("me");
 	AMateria* tmp;
-	tmp = src1->createMateria("ice");
+	tmp = src->createMateria("ice");
 	me->equip(tmp);
-	tmp = src1->createMateria("cure");
+	tmp = src->createMateria("cure");
 	me->equip(tmp);
 	ICharacter* bob = new Character("bob");
 	me->use(0, *bob);

@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 13:24:11 by mnassi            #+#    #+#             */
-/*   Updated: 2023/09/10 18:45:43 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/09/11 18:53:14 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,11 @@
 #include <iostream>
 #include <string>
 #include <exception>
+#include "Form.hpp"
 
 #define	st_ std::string
 
+class Form ;
 class Bureaucrat {
 	private :
 		st_ const  name;
@@ -45,8 +47,9 @@ class Bureaucrat {
 		Bureaucrat( void );
 		Bureaucrat( st_ const name, int grade );
 		Bureaucrat &operator=(const Bureaucrat &b);
+		void	signForm(Form &grades);
 		void	set_grade( int grade_ );
-		st_ const	get_name( void ) const ;
+		st_		get_name( void ) const ;
 		int		get_grade( void ) const ;
 		Bureaucrat( const Bureaucrat &copy );
 		~Bureaucrat( void );
