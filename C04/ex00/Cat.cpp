@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/26 17:44:37 by mnassi            #+#    #+#             */
-/*   Updated: 2023/09/06 16:26:17 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/09/08 16:47:27 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ Cat &Cat::operator=(const Cat &b) {
 
 Cat::Cat( void ) {
 	std::cout << RED "Cat Default Constructor Called" RESET << std::endl;
+	type = "Cat";
 }
 
 Cat::Cat( st_ set ) {

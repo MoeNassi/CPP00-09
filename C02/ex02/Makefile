@@ -16,7 +16,7 @@ $(NAME) : $(OBJ)
 	$(CPP) $(CFLAGS) $(OBJ) -o $(NAME)
 
 %.o : %.cpp $(HEADER)
-	$(CPP) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
 
 clean :
 	rm -rf $(OBJ)

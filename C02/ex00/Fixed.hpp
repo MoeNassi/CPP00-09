@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 14:45:24 by mnassi            #+#    #+#             */
-/*   Updated: 2023/08/27 20:30:54 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/08/22 14:19:46 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ class Fixed {
 		int stock;
 		static const int eight_bits;
 	public:
-		Fixed( void );
+		Fixed(void);
 		Fixed(Fixed &as_arg);
 		int getRawBits( void ) const;
 		void setRawBits( int const raw );

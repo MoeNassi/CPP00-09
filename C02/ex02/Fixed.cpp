@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 14:48:11 by mnassi            #+#    #+#             */
-/*   Updated: 2023/08/22 18:43:41 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/08/22 16:51:57 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,7 @@ Fixed Fixed::operator*(const Fixed &b) {
 }
 
 Fixed Fixed::operator+(const Fixed &b) {
-
-	return (Fixed(this->stock + b.stock));
+	return (Fixed(this->toFloat() + b.toFloat()));
 }
 
 Fixed Fixed::operator/(const Fixed &b) {
@@ -88,7 +87,7 @@ Fixed Fixed::operator/(const Fixed &b) {
 }
 
 Fixed Fixed::operator-(const Fixed &b) {
-	return (Fixed(this->stock / b.stock));
+	return (Fixed(this->toInt() - b.toInt()));
 }
 
 Fixed Fixed::operator++( int ) {

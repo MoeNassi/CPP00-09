@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/26 17:00:05 by mnassi            #+#    #+#             */
-/*   Updated: 2023/09/06 15:51:06 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/09/08 16:49:59 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ Animal &Animal::operator=(const Animal &b) {
 	return (*this);
 }
 
-Animal::Animal( void ) : type("Default"){
+Animal::Animal( void ) : type("Default") {
 	std::cout << RED "Default Constructor Called" RESET << std::endl;
 }
 

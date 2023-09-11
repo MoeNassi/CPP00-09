@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/26 17:44:13 by mnassi            #+#    #+#             */
-/*   Updated: 2023/09/08 16:04:59 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/09/08 16:54:34 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ Dog &Dog::operator=(const Dog &b) {
 Dog::Dog( void ) {
 	std::cout << RED "Dog Default Constructor Called" RESET << std::endl;
 	idea = new Brain();
-	this->type = "Default";
+	type = "Dog";
 }
 
 Dog::Dog( st_ type ) {
@@ -36,6 +36,7 @@ Dog::Dog( st_ type ) {
 
 Dog::Dog( const Dog &obj ) {
 	std::cout << RED "Dog Copy Constructor Called" RESET << std::endl;
+	idea = new Brain();
 	*this = obj;
 }
 
