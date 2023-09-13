@@ -1,14 +1,14 @@
-NAME = Form
+NAME = ShrubberyCreationForm
 
 CPP = c++
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRC = Bureaucrat.cpp main.cpp Form.cpp
+SRC = Bureaucrat.cpp main.cpp AForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
-HEADER = Bureaucrat.hpp Form.hpp
+HEADER = Bureaucrat.hpp AForm.hpp ShrubberyCreationForm.hpp RobotomyRequestForm.hpp
 
 all : $(NAME)
 
@@ -19,7 +19,7 @@ $(NAME) : $(OBJ) $(HEADER)
 	$(CPP) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
 
 clean :
-	rm -rf $(OBJ)
+	rm -rf $(OBJ) *_shrubbery
 
 fclean : clean
 	rm -rf $(NAME)

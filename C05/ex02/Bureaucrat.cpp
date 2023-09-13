@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 13:47:16 by mnassi            #+#    #+#             */
-/*   Updated: 2023/09/13 15:12:14 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/09/13 15:43:59 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ const char *Bureaucrat::GradeTooLowException::what() const throw() {
 	return ("Grade Is Too Low");
 }
 
-void	Bureaucrat::signForm(Form &grades) {
+void	Bureaucrat::signForm(AForm &grades) {
 	try {
 		grades.beSigned(*this);
 	}

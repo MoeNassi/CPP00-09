@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.cpp                                           :+:      :+:    :+:   */
+/*   AForm.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,68 +10,72 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Form.hpp"
+#include "AForm.hpp"
 
-Form &Form::operator=(const Form &b) {
+AForm &AForm::operator=(const AForm &b) {
 	std::cout << "Copy assignment operator called" << std::endl;
 	(void)b;
 	return (*this);
 }
 
-Form::Form( void ) : name("Default"), grade(0) {
-	std::cout << "Default Constructor Called <<Form>>" << std::endl;
+AForm::AForm( void ) : name("Default"), exec(0), grade(0) {
+	std::cout << "Default Constructor Called <<AForm>>" << std::endl;
 }
 
-Form::Form( const Form &cpy ) : grade(cpy.grade) {
-	std::cout << "Default copy Constructor Called <<Form>>" << std::endl;
+AForm::AForm( const AForm &cpy ) : exec(cpy.exec), grade(cpy.grade) {
+	std::cout << "Default copy Constructor Called <<AForm>>" << std::endl;
 	*this = cpy;
 }
 
-Form::Form( st_ name_, int grade_ ) : name(name_), grade(grade_) {
-	std::cout << "Constructor Called <<Form>>" << std::endl;
+int	AForm::get_exec( void ) const {
+	return (exec);
+}
+
+AForm::AForm( st_ name_, int const grade_, int const exec_  ) : name(name_), exec(exec_), grade(grade_) {
+	std::cout << "Constructor Called <<AForm>>" << std::endl;
 	if (grade > 150)
 		throw(GradeTooLowException());
 	else if (grade <= 0)
 		throw(GradeTooHighException());
 }
 
-st_	Form::get_name( void ) const {
+st_	AForm::get_name( void ) const {
 	return (name);
 }
 
-int	Form::get_grade( void ) const {
+int	AForm::get_grade( void ) const {
 	return (grade);
 }
 
-bool	Form::get_sign( void ) const {
+bool	AForm::get_sign( void ) const {
 	return (sign);
 }
 
-void	Form::set_sign( bool check ) {
+void	AForm::set_sign( bool check ) {
 	sign = check;
 }
 
-void	Form::beSigned(Bureaucrat &grades) {
+void	AForm::beSigned(Bureaucrat &grades) {
 	if (this->get_sign())
-		throw (Form::AlreadySigned());
+		throw (AForm::AlreadySigned());
 	else if (grades.get_grade() < this->get_grade())
-		throw (Form::GradeTooHighException());
+		throw (AForm::GradeTooHighException());
 	else 
 		this->set_sign(true);
 }
 
-const char *Form::GradeTooHighException::what() const throw() {
+const char *AForm::GradeTooHighException::what() const throw() {
 	return ("Grade too High");
 }
 
-const char *Form::AlreadySigned::what() const throw() {
+const char *AForm::AlreadySigned::what() const throw() {
 	return ("Already Signed");
 }
 
-const char *Form::GradeTooLowException::what() const throw() {
+const char *AForm::GradeTooLowException::what() const throw() {
 	return ("Grade too Low");
 }
 
-Form::~Form( void ) {
-	std::cout << "Destructor Called <<Form>>" << std::endl;
+AForm::~AForm( void ) {
+	std::cout << "Destructor Called <<AForm>>" << std::endl;
 }
