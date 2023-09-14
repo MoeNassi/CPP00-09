@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 13:24:11 by mnassi            #+#    #+#             */
-/*   Updated: 2023/09/13 15:43:53 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/09/14 15:47:07 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ class AForm ;
 
 class Bureaucrat {
 	private :
-		st_ const  name;
-		int		  grade;
+		st_ const	name;
+		int			grade;
 	public :
 		Bureaucrat( void );
 		Bureaucrat( st_ const name, int grade );
@@ -52,6 +52,7 @@ class Bureaucrat {
 		void	set_grade( int grade_ );
 		st_		get_name( void ) const ;
 		int		get_grade( void ) const ;
+		void	executeForm(AForm const & form);
 		Bureaucrat( const Bureaucrat &copy );
 		~Bureaucrat( void );
 

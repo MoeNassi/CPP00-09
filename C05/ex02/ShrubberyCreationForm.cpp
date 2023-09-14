@@ -6,13 +6,13 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 15:32:40 by mnassi            #+#    #+#             */
-/*   Updated: 2023/09/13 18:58:52 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/09/14 16:44:51 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
 
-Shrubbery::Shrubbery() : AForm("Default", 145, 137)  {
+Shrubbery::Shrubbery() : AForm("Default", 145, 137), target("Default")  {
 	std::cout << "Shrubbery Default Constructor Called" << std::endl;
 }
 
@@ -31,9 +31,9 @@ Shrubbery &Shrubbery::operator=(const Shrubbery &b) {
 	return (*this);
 }
 
-void	Shrubbery::run( void ) {
-	if (get_exec() != 137 && get_grade() != 145)
-		return ;
+void	Shrubbery::execute( Bureaucrat const &executor ) const {
+	if (!get_sign() && executor.get_grade() > get_grade())
+		throw(GradeTooLowException());
 	std::ofstream	file(target + "_shrubbery");
 	if (!file.is_open()) {
 		std::cout << "Fd Error" << std::endl;
@@ -46,10 +46,6 @@ void	Shrubbery::run( void ) {
 	file <<	"////|\\\\\\\\" << std::endl;
 	file <<	"    |";
 	file.close();
-}
-
-void	Shrubbery::rando() {
-
 }
 
 Shrubbery::~Shrubbery() {

@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
+/*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/13 15:32:48 by mnassi            #+#    #+#             */
-/*   Updated: 2023/09/14 16:42:01 by mnassi           ###   ########.fr       */
+/*   Created: 2023/09/14 12:41:12 by mnassi            #+#    #+#             */
+/*   Updated: 2023/09/14 16:41:27 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SHRUBBERYCREATIONFORM_HPP
-#define SHRUBBERYCREATIONFORM_HPP
+#ifndef PRESIDENTIALPARDONFORM_HPP
+#define PRESIDENTIALPARDONFORM_HPP
 
 #include "AForm.hpp"
-#include <fstream>
 
-class Shrubbery : public AForm {
+class Presidential : public AForm {
 	private :
 		st_	target;
 	public :
-		Shrubbery( void );
-		Shrubbery( st_ target );
-		Shrubbery( const Shrubbery &cpy );
-		Shrubbery &operator=(const Shrubbery &b);
-		void	execute( Bureaucrat const &executor ) const;
-		~Shrubbery( void );
+		Presidential( void );
+		Presidential( st_ target );
+		Presidential &operator=(const Presidential &b);
+		Presidential( const Presidential &copy );
+		void	execute( Bureaucrat const &executor ) const ;
+		~Presidential( void );
 };
 
 #endif

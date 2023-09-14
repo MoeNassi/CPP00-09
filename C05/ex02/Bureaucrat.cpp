@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 13:47:16 by mnassi            #+#    #+#             */
-/*   Updated: 2023/09/13 15:43:59 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/09/14 16:36:52 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,17 @@ Bureaucrat::Bureaucrat( void ) : name("mohammed"), grade(0) {
 
 Bureaucrat::Bureaucrat( const st_ name_, int grade_ ) : name(name_), grade(grade_) {
 	std::cout << "Paramirized Bureaucrat Constructor Called" << std::endl;
+}
+
+void	Bureaucrat::executeForm(AForm const &form) {
+	try {
+		form.execute(*this);
+	}
+	catch (std::exception &e) {
+		std::cout << name << " didnt execute " << form.get_name() << std::endl;
+		return ;
+	}
+	std::cout << name << " execute " << form.get_name() << std::endl;
 }
 
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat &b) {

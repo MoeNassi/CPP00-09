@@ -6,13 +6,13 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 18:41:45 by mnassi            #+#    #+#             */
-/*   Updated: 2023/09/13 19:02:34 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/09/14 16:44:41 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RobotomyRequestForm.hpp"
 
-Robotomy::Robotomy( void ) : AForm("default", 72, 45) {
+Robotomy::Robotomy( void ) : AForm("default", 72, 45), target("Default") {
 	std::cout << "Robotomy Default Constructor Called" << std::endl;
 }
 
@@ -31,16 +31,14 @@ Robotomy &Robotomy::operator=(const Robotomy &b) {
 	return (*this);
 }
 
-void	Robotomy::rando( void ) {
-	int	n_ber = rand() % 100;
-	if (n_ber % 2 == 0)
+void	Robotomy::execute( Bureaucrat const &executor ) const {
+	if (!get_sign() && executor.get_grade() > get_grade())
+		throw(GradeTooLowException());
+	srand(time(0));
+	if ((rand()) % 2 == 0)
 		std::cout << this->target << " has been robotomized " << std::endl;
 	else
 		std::cout << this->target << " robotomy failed " << std::endl;
-}
-
-void	Robotomy::run( void ) {
-
 }
 
 Robotomy::~Robotomy( void ) {

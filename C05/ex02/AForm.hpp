@@ -37,8 +37,7 @@ class AForm {
 		int	get_exec( void ) const ;
 		bool	get_sign( void ) const ;
 		void	set_sign( bool check );
-		virtual void	run( void ) = 0;
-		virtual void	rando( void ) = 0;
+		virtual void	execute( Bureaucrat const &executor ) const = 0;
 		virtual ~AForm( void );
 	class GradeTooHighException : public std::exception {
 		public :
