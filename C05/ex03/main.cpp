@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 14:08:57 by mnassi            #+#    #+#             */
-/*   Updated: 2023/09/16 15:41:39 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/09/16 16:47:05 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int main() {
 		AForm* rrf;
 		Intern someRandomIntern;
 		Bureaucrat	ffs("mohammed", 25);
-		rrf = someRandomIntern.makeForm("shrubbery creation", "Bender");
+		rrf = someRandomIntern.makeForm("robotomy request", "Bender");
 		rrf->execute(ffs);
 		delete rrf;
 	}
