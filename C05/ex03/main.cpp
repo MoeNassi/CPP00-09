@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Intern.hpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/14 16:57:45 by mnassi            #+#    #+#             */
-/*   Updated: 2023/09/16 13:02:10 by mnassi           ###   ########.fr       */
+/*   Created: 2023/09/10 14:08:57 by mnassi            #+#    #+#             */
+/*   Updated: 2023/09/16 13:24:00 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INTERN_HPP
-#define INTERN_HPP
-
-#include <iostream>
+#include "Bureaucrat.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
-#define st_	std::string
+#include "Intern.hpp"
+#include "AForm.hpp"
 
-class Intern {
-	private:
-		st_		target;
-	public:
-		Intern( void );
-		Intern( st_ target );
-		AForm	*makeForm( st_ type, st_ target );
-		Intern( const Intern &cpy );
-		~Intern();
-};
-
-#endif
+int main() {
+	try {
+		Intern someRandomIntern;
+		Bureaucrat	ffs("mohammed", 25);
+		AForm* rrf;
+		rrf = someRandomIntern.makeForm("robotomy request", "Bender");
+		rrf->execute(ffs);
+	}
+	catch (std::exception &e) {
+		std::cout << e.what() << std::endl;
+	}
+}

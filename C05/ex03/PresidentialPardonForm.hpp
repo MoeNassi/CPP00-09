@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Intern.hpp                                         :+:      :+:    :+:   */
+/*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/14 16:57:45 by mnassi            #+#    #+#             */
-/*   Updated: 2023/09/16 13:02:10 by mnassi           ###   ########.fr       */
+/*   Created: 2023/09/14 12:41:12 by mnassi            #+#    #+#             */
+/*   Updated: 2023/09/14 16:41:27 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INTERN_HPP
-#define INTERN_HPP
+#ifndef PRESIDENTIALPARDONFORM_HPP
+#define PRESIDENTIALPARDONFORM_HPP
 
-#include <iostream>
-#include "ShrubberyCreationForm.hpp"
-#include "RobotomyRequestForm.hpp"
-#include "PresidentialPardonForm.hpp"
-#define st_	std::string
+#include "AForm.hpp"
 
-class Intern {
-	private:
-		st_		target;
-	public:
-		Intern( void );
-		Intern( st_ target );
-		AForm	*makeForm( st_ type, st_ target );
-		Intern( const Intern &cpy );
-		~Intern();
+class Presidential : public AForm {
+	private :
+		st_	target;
+	public :
+		Presidential( void );
+		Presidential( st_ target );
+		Presidential &operator=(const Presidential &b);
+		Presidential( const Presidential &copy );
+		void	execute( Bureaucrat const &executor ) const ;
+		~Presidential( void );
 };
 
 #endif

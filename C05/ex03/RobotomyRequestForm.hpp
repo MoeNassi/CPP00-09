@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Intern.hpp                                         :+:      :+:    :+:   */
+/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/14 16:57:45 by mnassi            #+#    #+#             */
-/*   Updated: 2023/09/16 13:02:10 by mnassi           ###   ########.fr       */
+/*   Created: 2023/09/13 18:29:26 by mnassi            #+#    #+#             */
+/*   Updated: 2023/09/14 16:42:00 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INTERN_HPP
-#define INTERN_HPP
+#ifndef ROBOOTOMYREQUESTFORM_HPP
+#define ROBOOTOMYREQUESTFORM_HPP
 
-#include <iostream>
-#include "ShrubberyCreationForm.hpp"
-#include "RobotomyRequestForm.hpp"
-#include "PresidentialPardonForm.hpp"
-#define st_	std::string
+#include "AForm.hpp"
 
-class Intern {
-	private:
-		st_		target;
-	public:
-		Intern( void );
-		Intern( st_ target );
-		AForm	*makeForm( st_ type, st_ target );
-		Intern( const Intern &cpy );
-		~Intern();
+class Robotomy : public AForm {
+	private :
+		st_ target;
+	public :
+		Robotomy( void );
+		Robotomy( st_ target_ );
+		Robotomy( const Robotomy &cpy );
+		Robotomy &operator=(const Robotomy &b);
+		void	execute( Bureaucrat const &executor ) const;
+		~Robotomy( void );
 };
 
 #endif
