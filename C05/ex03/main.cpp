@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 14:08:57 by mnassi            #+#    #+#             */
-/*   Updated: 2023/09/16 14:16:50 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/09/16 15:41:39 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,15 @@
 
 int main() {
 	try {
+		AForm* rrf;
 		Intern someRandomIntern;
 		Bureaucrat	ffs("mohammed", 25);
-		AForm* rrf;
-		rrf = someRandomIntern.makeForm("robotomy request", "Bender");
+		rrf = someRandomIntern.makeForm("shrubbery creation", "Bender");
 		rrf->execute(ffs);
+		delete rrf;
+	}
+	catch (int) {
+		return (0);
 	}
 	catch (std::exception &e) {
 		std::cout << e.what() << std::endl;

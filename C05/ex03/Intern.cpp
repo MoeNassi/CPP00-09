@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 16:57:43 by mnassi            #+#    #+#             */
-/*   Updated: 2023/09/16 14:15:36 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/09/16 15:41:19 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,26 @@ AForm	*Intern::makeForm( st_ type, st_ target ) {
 	st_	forms[3] = {"shrubbery creation", "robotomy request", "presidential pardon"};
 	while (i < 3 && forms[i] != type)
 		i++;
-	if (forms[i] != type) {
-		std::cout << this->target << " form name doesnt exist " << std::endl;
-		return (NULL);
+	switch (i) {
+		case 0 :
+			delete forms_ptr[1];
+			delete forms_ptr[2];
+			return (forms_ptr[0]);
+		case 1 :
+			delete forms_ptr[0];
+			delete forms_ptr[2];
+			return (forms_ptr[1]);
+		case 2 :
+			delete forms_ptr[0];
+			delete forms_ptr[1];
+			return (forms_ptr[2]);
+		default :
+			std::cout << RED "Form name doesnt exist " RESET_COLOR << std::endl;
+			for (int i = 0; i < 3 ; i++)
+				delete forms_ptr[i];
+			throw (-1);
 	}
-	return (forms_ptr[i]);
+	return (NULL);
 }
 
 Intern::Intern( st_ target_ ) : target(target_) {

@@ -1,4 +1,4 @@
-NAME = ShrubberyCreationForm
+NAME = intern
 
 CPP = c++
 
