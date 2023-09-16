@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 16:57:43 by mnassi            #+#    #+#             */
-/*   Updated: 2023/09/16 13:18:17 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/09/16 14:15:36 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,13 @@ Intern::Intern( void ) {
 AForm	*Intern::makeForm( st_ type, st_ target ) {
 	int		i = 0;
 	AForm	*forms_ptr[3] = {new Shrubbery(target), new Robotomy(target), new Presidential(target)};
-	st_	forms[3] = {"shrubbery request", "robotomy request", "presidential request"};
+	st_	forms[3] = {"shrubbery creation", "robotomy request", "presidential pardon"};
 	while (i < 3 && forms[i] != type)
 		i++;
-	if (forms[i] != type)
+	if (forms[i] != type) {
+		std::cout << this->target << " form name doesnt exist " << std::endl;
 		return (NULL);
+	}
 	return (forms_ptr[i]);
 }
 
