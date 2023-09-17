@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 13:24:11 by mnassi            #+#    #+#             */
-/*   Updated: 2023/09/14 15:47:07 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/09/17 17:02:23 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 #define BOLD_PURPLE "\033[1;35m"
 #define BOLD_CYAN "\033[1;36m"
 #define BOLD_WHITE "\033[1;37m"
+
 #ifndef	BUREAUCRAT_HPP
 #define	BUREAUCRAT_HPP
 
@@ -66,5 +67,8 @@ class Bureaucrat {
 			virtual const char* what() const throw();
 	};
 };
+
+
+std::ostream &operator<<(std::ostream& os, const Bureaucrat& dt);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 13:24:11 by mnassi            #+#    #+#             */
-/*   Updated: 2023/09/11 18:53:14 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/09/17 16:54:01 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,16 @@
 #define BOLD_PURPLE "\033[1;35m"
 #define BOLD_CYAN "\033[1;36m"
 #define BOLD_WHITE "\033[1;37m"
+
 #ifndef	BUREAUCRAT_HPP
 #define	BUREAUCRAT_HPP
 
 #include <iostream>
 #include <string>
 #include <exception>
-#include "Form.hpp"
 
 #define	st_ std::string
 
-class Form ;
 class Bureaucrat {
 	private :
 		st_ const  name;
@@ -47,9 +46,10 @@ class Bureaucrat {
 		Bureaucrat( void );
 		Bureaucrat( st_ const name, int grade );
 		Bureaucrat &operator=(const Bureaucrat &b);
-		void	signForm(Form &grades);
+		void	increment();
+		void	decrement();
 		void	set_grade( int grade_ );
-		st_		get_name( void ) const ;
+		st_ const	get_name( void ) const ;
 		int		get_grade( void ) const ;
 		Bureaucrat( const Bureaucrat &copy );
 		~Bureaucrat( void );
@@ -64,5 +64,8 @@ class Bureaucrat {
 			virtual const char* what() const throw();
 	};
 };
+
+
+std::ostream &operator<<(std::ostream& os, const Bureaucrat& dt);
 
 #endif

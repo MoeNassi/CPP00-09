@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 13:47:16 by mnassi            #+#    #+#             */
-/*   Updated: 2023/09/16 13:23:21 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/09/17 17:02:48 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ Bureaucrat::Bureaucrat( void ) : name("mohammed"), grade(0) {
 }
 
 Bureaucrat::Bureaucrat( const st_ name_, int grade_ ) : name(name_), grade(grade_) {
-	std::cout << "Paramirized Bureaucrat Constructor Called" << std::endl;
+	std::cout << "Parametrized Bureaucrat Constructor Called" << std::endl;
 	if (grade_ <= 0) 
-		throw (GradeTooHighException());
-	else if (grade_ > 150)
-		throw (GradeTooLowException());
+		throw(GradeTooHighException());
+	if (grade_ > 150)
+		throw(GradeTooLowException());
 }
 
 void	Bureaucrat::executeForm(AForm const &form) {
@@ -73,6 +73,29 @@ void	Bureaucrat::set_grade( int grade_ ) {
 		throw(GradeTooLowException());
 	else
 		grade = grade_;
+}
+
+void	Bureaucrat::increment() {
+	int		stock = 0;
+	stock = this->grade - 1;
+	if (stock <= 0)
+		throw (Bureaucrat::GradeTooHighException());
+	else
+		this->grade = stock;
+}
+
+void	Bureaucrat::decrement() {
+	int		stock = 0;
+	stock = this->grade + 1;
+	if (stock > 150)
+		throw (Bureaucrat::GradeTooLowException());
+	else
+		this->grade = stock;
+}
+
+std::ostream &operator<<(std::ostream& os, const Bureaucrat& dt) {
+	os << dt.get_name() << ", bureaucrat grade " << dt.get_grade();
+	return (os);
 }
 
 st_	Bureaucrat::get_name( void ) const {

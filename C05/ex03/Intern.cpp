@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 16:57:43 by mnassi            #+#    #+#             */
-/*   Updated: 2023/09/16 15:41:19 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/09/17 16:13:56 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,29 +16,28 @@ Intern::Intern( void ) {
 	std::cout << "Intern Default Constructor Called" << std::endl;
 }
 
+Intern &Intern::operator=(const Intern &b) {
+	std::cout << "Intern Copy assignment operator called" << std::endl;
+	if (this != &b)
+		this->target = b.target;
+	return (*this);
+}
+
 AForm	*Intern::makeForm( st_ type, st_ target ) {
 	int		i = 0;
-	AForm	*forms_ptr[3] = {new Shrubbery(target), new Robotomy(target), new Presidential(target)};
 	st_	forms[3] = {"shrubbery creation", "robotomy request", "presidential pardon"};
 	while (i < 3 && forms[i] != type)
 		i++;
 	switch (i) {
 		case 0 :
-			delete forms_ptr[1];
-			delete forms_ptr[2];
-			return (forms_ptr[0]);
+			return (new Shrubbery(target));
 		case 1 :
-			delete forms_ptr[0];
-			delete forms_ptr[2];
-			return (forms_ptr[1]);
+			return (new Robotomy(target));
 		case 2 :
-			delete forms_ptr[0];
-			delete forms_ptr[1];
-			return (forms_ptr[2]);
+			return (new Presidential(target));
+			break ;
 		default :
-			std::cout << RED "Form name doesnt exist " RESET_COLOR << std::endl;
-			for (int i = 0; i < 3 ; i++)
-				delete forms_ptr[i];
+			std::cout << RED << "form name not found" << RESET_COLOR << std::endl;
 			throw (-1);
 	}
 	return (NULL);
