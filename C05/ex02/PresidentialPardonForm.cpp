@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 12:40:58 by mnassi            #+#    #+#             */
-/*   Updated: 2023/09/14 16:44:55 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/09/17 17:50:20 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ Presidential::Presidential( const Presidential &copy ) {
 void	Presidential::execute( Bureaucrat const &executor ) const {
 	if (!get_sign() && executor.get_grade() > get_grade())
 		throw(GradeTooLowException());
-	std::cout << target << " has been pardoned by Zaphod Beeblebrox " << std::endl;
+	std::cout << BLUE << target << " has been pardoned by Zaphod Beeblebrox " << RESET_COLOR << std::endl;
 }
 
-Presidential::~Presidential( void ) {
+Presidential::~Presidential( void ) { // check bureaucrat aform class
 	std::cout << "Presidential Destructor Called" << std::endl;
 }

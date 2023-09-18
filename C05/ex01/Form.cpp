@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 15:37:29 by mnassi            #+#    #+#             */
-/*   Updated: 2023/09/13 15:00:02 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/09/17 17:41:17 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,20 @@
 
 Form &Form::operator=(const Form &b) {
 	std::cout << "Copy assignment operator called" << std::endl;
-	(void)b;
+	this->sign = b.sign;
 	return (*this);
 }
 
-Form::Form( void ) : name("Default"), grade(0) {
+Form::Form( void ) : name("Default"), sign(false), grade(0), exec(0) {
 	std::cout << "Default Constructor Called <<Form>>" << std::endl;
 }
 
-Form::Form( const Form &cpy ) : grade(cpy.grade) {
+Form::Form( const Form &cpy ) : grade(cpy.grade), exec(cpy.exec) {
 	std::cout << "Default copy Constructor Called <<Form>>" << std::endl;
 	*this = cpy;
 }
 
-Form::Form( st_ name_, int grade_ ) : name(name_), grade(grade_) {
+Form::Form( st_ name_, int const grade_, int const exec_ ) : name(name_), sign(false), grade(grade_), exec(exec_) {
 	std::cout << "Constructor Called <<Form>>" << std::endl;
 	if (grade > 150)
 		throw(GradeTooLowException());
@@ -41,6 +41,10 @@ st_	Form::get_name( void ) const {
 
 int	Form::get_grade( void ) const {
 	return (grade);
+}
+
+int	Form::get_exec( void ) const {
+	return (exec);
 }
 
 bool	Form::get_sign( void ) const {
@@ -70,6 +74,11 @@ const char *Form::AlreadySigned::what() const throw() {
 
 const char *Form::GradeTooLowException::what() const throw() {
 	return ("Grade too Low");
+}
+
+std::ostream &operator<<(std::ostream& os, const Form& dt) {
+	os << dt.get_name() << ", Form grade : " << dt.get_grade() << std::endl;
+	return (os);
 }
 
 Form::~Form( void ) {

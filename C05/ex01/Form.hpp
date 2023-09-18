@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 15:37:39 by mnassi            #+#    #+#             */
-/*   Updated: 2023/09/11 18:52:43 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/09/17 17:40:30 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,16 @@ class Form {
 		st_ const name;
 		bool	  sign;
 		int const grade;
+		int const exec;
 	public :
 		Form( void );
-		Form( st_ name, int grade );
+		Form( st_ name, int const grade_, int const exec_ );
 		Form( const Form &cpy );
 		Form &operator=(const Form &b);
 		void beSigned(Bureaucrat &grades);
 		st_	get_name( void ) const ;
 		int	get_grade( void ) const ;
+		int	get_exec( void ) const ;
 		bool	get_sign( void ) const ;
 		void	set_sign( bool check );
 		~Form( void );
@@ -49,5 +51,7 @@ class Form {
 			virtual const char* what() const throw();
 	};
 };
+
+std::ostream &operator<<(std::ostream& os, const Form& dt);
 
 #endif

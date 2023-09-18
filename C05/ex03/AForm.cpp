@@ -14,29 +14,29 @@
 
 AForm &AForm::operator=(const AForm &b) {
 	std::cout << "Copy assignment operator called" << std::endl;
-	(void)b;
+	this->sign = b.sign;
 	return (*this);
 }
 
-AForm::AForm( void ) : name("Default"), exec(0), grade(0) {
+AForm::AForm( void ) : name("Default"), sign(false), exec(0), grade(0) {
 	std::cout << "Default Constructor Called <<AForm>>" << std::endl;
 }
 
-AForm::AForm( const AForm &cpy ) : exec(cpy.exec), grade(cpy.grade) {
+AForm::AForm( const AForm &cpy ) : sign(false), exec(cpy.exec), grade(cpy.grade) {
 	std::cout << "Default copy Constructor Called <<AForm>>" << std::endl;
 	*this = cpy;
 }
 
-int	AForm::get_exec( void ) const {
-	return (exec);
-}
-
-AForm::AForm( st_ name_, int const grade_, int const exec_  ) : name(name_), exec(exec_), grade(grade_) {
+AForm::AForm( st_ name_, int const grade_, int const exec_  ) : name(name_), sign(false), exec(exec_), grade(grade_) {
 	std::cout << "Constructor Called <<AForm>>" << std::endl;
 	if (grade > 150)
 		throw(GradeTooLowException());
 	else if (grade <= 0)
 		throw(GradeTooHighException());
+}
+
+int	AForm::get_exec( void ) const {
+	return (exec);
 }
 
 st_	AForm::get_name( void ) const {
@@ -74,6 +74,11 @@ const char *AForm::AlreadySigned::what() const throw() {
 
 const char *AForm::GradeTooLowException::what() const throw() {
 	return ("Grade too Low");
+}
+
+std::ostream &operator<<(std::ostream& os, const AForm& dt) {
+	os << dt.get_name() << ", AForm grade : " << dt.get_grade() << std::endl;
+	return (os);
 }
 
 AForm::~AForm( void ) {

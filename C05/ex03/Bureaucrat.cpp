@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 13:47:16 by mnassi            #+#    #+#             */
-/*   Updated: 2023/09/17 17:02:48 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/09/17 17:28:32 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ void	Bureaucrat::signForm(AForm &grades) {
 	}
 	std::cout << BOLD_GREEN << this->get_name() << " sign " << grades.get_name() << std::endl << RESET_COLOR;
 }
-
 
 const char *Bureaucrat::GradeTooHighException::what() const throw() {
 	return ("Grade Is Too High");

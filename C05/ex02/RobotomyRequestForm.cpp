@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 18:41:45 by mnassi            #+#    #+#             */
-/*   Updated: 2023/09/14 16:44:41 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/09/17 17:47:58 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ void	Robotomy::execute( Bureaucrat const &executor ) const {
 		throw(GradeTooLowException());
 	srand(time(0));
 	if ((rand()) % 2 == 0)
-		std::cout << this->target << " has been robotomized " << std::endl;
+		std::cout << GREEN << this->target << " has been robotomized " RESET_COLOR << std::endl;
 	else
-		std::cout << this->target << " robotomy failed " << std::endl;
+		std::cout << RED << this->target << " robotomy failed " RESET_COLOR << std::endl;
 }
 
 Robotomy::~Robotomy( void ) {

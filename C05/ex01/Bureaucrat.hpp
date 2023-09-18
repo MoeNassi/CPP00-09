@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 13:24:11 by mnassi            #+#    #+#             */
-/*   Updated: 2023/09/17 16:54:01 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/09/17 17:16:35 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,11 @@
 #include <iostream>
 #include <string>
 #include <exception>
+#include "Form.hpp"
 
 #define	st_ std::string
+
+class	Form;
 
 class Bureaucrat {
 	private :
@@ -50,6 +53,7 @@ class Bureaucrat {
 		void	decrement();
 		void	set_grade( int grade_ );
 		st_ const	get_name( void ) const ;
+		void	signForm(Form &grades);
 		int		get_grade( void ) const ;
 		Bureaucrat( const Bureaucrat &copy );
 		~Bureaucrat( void );
@@ -64,7 +68,6 @@ class Bureaucrat {
 			virtual const char* what() const throw();
 	};
 };
-
 
 std::ostream &operator<<(std::ostream& os, const Bureaucrat& dt);
 

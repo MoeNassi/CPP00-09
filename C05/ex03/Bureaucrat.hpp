@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 13:24:11 by mnassi            #+#    #+#             */
-/*   Updated: 2023/09/17 17:02:23 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/09/17 17:29:56 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ class Bureaucrat {
 		Bureaucrat( st_ const name, int grade );
 		Bureaucrat &operator=(const Bureaucrat &b);
 		void	signForm(AForm &grades);
+		void	increment();
+		void	decrement();
 		void	set_grade( int grade_ );
 		st_		get_name( void ) const ;
 		int		get_grade( void ) const ;
@@ -67,7 +69,6 @@ class Bureaucrat {
 			virtual const char* what() const throw();
 	};
 };
-
 
 std::ostream &operator<<(std::ostream& os, const Bureaucrat& dt);
 

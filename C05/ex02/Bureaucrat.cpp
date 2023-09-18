@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 13:47:16 by mnassi            #+#    #+#             */
-/*   Updated: 2023/09/17 16:59:55 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/09/17 17:33:49 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,28 @@ void	Bureaucrat::set_grade( int grade_ ) {
 		throw(GradeTooLowException());
 	else
 		grade = grade_;
+}
+
+void	Bureaucrat::executeForm(AForm const &form) {
+	try {
+		form.execute(*this);
+	}
+	catch (std::exception &e) {
+		std::cout << name << " didnt execute " << form.get_name() << std::endl;
+		return ;
+	}
+	std::cout << name << " execute " << form.get_name() << std::endl;
+}
+
+void	Bureaucrat::signForm(AForm &grades) {
+	try {
+		grades.beSigned(*this);
+	}
+	catch(std::exception &e) {
+		std::cout << BOLD_RED << this->get_name() << " couldn't sign " << grades.get_name() << " because " << e.what() << std::endl << RESET_COLOR;
+		return ;
+	}
+	std::cout << BOLD_GREEN << this->get_name() << " sign " << grades.get_name() << std::endl << RESET_COLOR;
 }
 
 const st_	Bureaucrat::get_name( void ) const {

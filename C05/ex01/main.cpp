@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 14:08:57 by mnassi            #+#    #+#             */
-/*   Updated: 2023/09/13 15:16:23 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/09/17 17:41:47 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int main() {
 	Bureaucrat	person("mohammed", 15);
-	Form	person1("joel", 14);
+	Form	person1("joel", 14, 1);
 	/*-----------Too High exception-----------*/
 	try {
 		person.set_grade(0);
