@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 16:58:36 by mnassi            #+#    #+#             */
-/*   Updated: 2023/09/19 18:51:55 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/09/21 14:56:23 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 #define MAGENTA "\x1b[35m"
 
 #include <iostream>
+#include <sstream>
 
 #define st_ std::string
 

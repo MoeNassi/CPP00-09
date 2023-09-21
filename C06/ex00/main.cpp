@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 18:46:58 by mnassi            #+#    #+#             */
-/*   Updated: 2023/09/19 18:54:42 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/09/21 11:59:58 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int main(int ac, char **av) {
 		std::cout << "One Arguments" << std::endl;
 		return (0);
 	}
-	ScalarConverter		obj;
-	obj.convert(av[1]);
+	ScalarConverter	stats;
+	stats.convert(av[1]);
+	
 }
