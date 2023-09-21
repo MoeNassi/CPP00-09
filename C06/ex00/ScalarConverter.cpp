@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 16:58:29 by mnassi            #+#    #+#             */
-/*   Updated: 2023/09/21 16:50:42 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/09/21 17:39:43 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,15 +82,16 @@ void	ScalarConverter::convert( st_ check ) {
 	st_	inf[7] = {"-inff", "+inff", "nanf", "-inf", "+inf", "nan"};
 	nonprintable(check, inf);
 	const char *var = check.c_str();
-	if (!(std::stringstream(check))) {
-		std::cout << "overflow" << std::endl;
-		return ;
-	}
+	std::stringstream ss(check.substr(0, check.length() - 1));
 	try {
 		isInt(check);
 	}
 	catch (int) {
-		int i = atoi(var);
+		int	i;
+		if (!(ss >> i)) {
+			std::cout << "overflow" << std::endl;
+			return ;
+		}
 		char car = static_cast<char>(i);
 		if (car < 32 || car > 126)
 			std::cout << "Char : " << "Non displayable" << std::endl;
@@ -100,10 +101,15 @@ void	ScalarConverter::convert( st_ check ) {
 		std::cout << "Int : " << i << std::endl;
 		float let = static_cast<float>(i);
 		std::cout << "Float : " << let << 'f' << std::endl;
-		std::cout << "Double : " << let << std::endl;
+		double d = static_cast<double>(let);
+		std::cout << "Double : " << d << std::endl;
 	}
 	catch (double) {
-		float let = atof(var);
+		double	let;
+		if (!(ss >> let)) {
+			std::cout << "overflow" << std::endl;
+			return ;
+		}
 		char car = static_cast<char>(let);
 		if (car < 32 || car > 126)
 			std::cout << "Char : " << "Non displayable" << std::endl;
@@ -113,10 +119,15 @@ void	ScalarConverter::convert( st_ check ) {
 		std::cout << "Int : " << i << std::endl;
 		let = static_cast<float>(let);
 		std::cout << "Float : " << let << 'f' << std::endl;
-		std::cout << "Double : " << let << std::endl;
+		double d = static_cast<double>(let);
+		std::cout << "Double : " << d << std::endl;
 	}
 	catch (float) {
-		float let = atof(var);
+		float	let;
+		if (!(ss >> let)) {
+			std::cout << "overflow" << std::endl;
+			return ;
+		}
 		char car = static_cast<char>(let);
 		if (car < 32 || car > 126)
 			std::cout << "Char : " << "Non displayable" << std::endl;
@@ -126,7 +137,8 @@ void	ScalarConverter::convert( st_ check ) {
 		std::cout << "Int : " << i << std::endl;
 		let = static_cast<float>(let);
 		std::cout << "Float : " << let << 'f' << std::endl;
-		std::cout << "Double : " << let << std::endl;
+		double d = static_cast<double>(let);
+		std::cout << "Double : " << d << std::endl;
 	}
 	catch (char) {
 		char car = var[0];
@@ -138,7 +150,8 @@ void	ScalarConverter::convert( st_ check ) {
 		std::cout << "Int : " << i << std::endl;
 		float let = static_cast<float>(car);
 		std::cout << "Float : " << let << 'f' << std::endl;
-		std::cout << "Double : " << let << std::endl;
+		double d = static_cast<double>(car);
+		std::cout << "Double : " << d << std::endl;
 	}
 }
 
