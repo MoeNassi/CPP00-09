@@ -6,23 +6,21 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 16:58:29 by mnassi            #+#    #+#             */
-/*   Updated: 2023/09/21 17:39:43 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/09/23 12:18:38 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 
 ScalarConverter::ScalarConverter( void ) {
-	std::cout << "ScalarConverter Default Constructor Called" << std::endl;
+
 }
 
 ScalarConverter::ScalarConverter( const ScalarConverter &cpy ) {
-	std::cout << "ScalarConverter Copy Constructor Called" << std::endl;
-	*this = cpy;
+	(void)cpy;
 }
 
 ScalarConverter &ScalarConverter::operator=(const ScalarConverter &b) {
-	std::cout << RED "ScalarConverter Copy assignment operator called" RESET << std::endl;
 	(void)b;
 	return (*this);
 }
@@ -66,14 +64,14 @@ void	nonprintable( st_ check, st_ inf[7] ) {
 		if (!check.compare(inf[i])) {
 			std::cout << "char : " << "impossible" << std::endl;
 			std::cout << "int : " << "impossible" << std::endl;
-			if (check[check.length() - 1] != 'f')
-				std::cout << "float : " << check + 'f' << std::endl;
-			else
+			if (!check.compare("+inff") || !check.compare("-inff") || !check.compare("nanf")) {
 				std::cout << "float : " << check << std::endl;
-			if (check[check.length() - 1] != 'f')
-				std::cout << "double : " << check << std::endl;
-			else
 				std::cout << "double : " << check.substr(0, check.length() - 1) << std::endl;
+			}
+			else if (!check.compare("+inf") || !check.compare("-inf") || !check.compare("nan")) {
+				std::cout << "float : " << check + 'f' << std::endl;
+				std::cout << "double : " << check << std::endl;
+			}
 		}
 	}
 }
@@ -82,7 +80,7 @@ void	ScalarConverter::convert( st_ check ) {
 	st_	inf[7] = {"-inff", "+inff", "nanf", "-inf", "+inf", "nan"};
 	nonprintable(check, inf);
 	const char *var = check.c_str();
-	std::stringstream ss(check.substr(0, check.length() - 1));
+	std::stringstream ss(check);
 	try {
 		isInt(check);
 	}
@@ -97,12 +95,9 @@ void	ScalarConverter::convert( st_ check ) {
 			std::cout << "Char : " << "Non displayable" << std::endl;
 		else
 			std::cout << "Char : " << car << std::endl;
-		i = static_cast<int>(i);
-		std::cout << "Int : " << i << std::endl;
-		float let = static_cast<float>(i);
-		std::cout << "Float : " << let << 'f' << std::endl;
-		double d = static_cast<double>(let);
-		std::cout << "Double : " << d << std::endl;
+		std::cout << "Int : " << static_cast<int>(i) << std::endl;
+		std::cout << "Float : " << static_cast<float>(i) << 'f' << std::endl;
+		std::cout << "Double : " << static_cast<double>(i) << std::endl;
 	}
 	catch (double) {
 		double	let;
@@ -115,15 +110,13 @@ void	ScalarConverter::convert( st_ check ) {
 			std::cout << "Char : " << "Non displayable" << std::endl;
 		else
 			std::cout << "Char : " << car << std::endl;
-		int i = static_cast<int>(let);
-		std::cout << "Int : " << i << std::endl;
-		let = static_cast<float>(let);
-		std::cout << "Float : " << let << 'f' << std::endl;
-		double d = static_cast<double>(let);
-		std::cout << "Double : " << d << std::endl;
+		std::cout << "Int : " << static_cast<int>(let) << std::endl;
+		std::cout << "Float : " << static_cast<float>(let) << 'f' << std::endl;
+		std::cout << "Double : " << static_cast<double>(let) << std::endl;
 	}
 	catch (float) {
 		float	let;
+		std::stringstream ss(check.substr(0, check.length() - 1));
 		if (!(ss >> let)) {
 			std::cout << "overflow" << std::endl;
 			return ;
@@ -133,12 +126,9 @@ void	ScalarConverter::convert( st_ check ) {
 			std::cout << "Char : " << "Non displayable" << std::endl;
 		else
 			std::cout << "Char : " << car << std::endl;
-		int i = static_cast<int>(let);
-		std::cout << "Int : " << i << std::endl;
-		let = static_cast<float>(let);
-		std::cout << "Float : " << let << 'f' << std::endl;
-		double d = static_cast<double>(let);
-		std::cout << "Double : " << d << std::endl;
+		std::cout << "Int : " << static_cast<int>(let) << std::endl;
+		std::cout << "Float : " << static_cast<float>(let) << 'f' << std::endl;
+		std::cout << "Double : " << static_cast<double>(let) << std::endl;
 	}
 	catch (char) {
 		char car = var[0];
@@ -146,15 +136,11 @@ void	ScalarConverter::convert( st_ check ) {
 			std::cout << "Char : " << "Non displayable" << std::endl;
 		else
 			std::cout << "Char : " << car << std::endl;
-		int i = static_cast<int>(car);
-		std::cout << "Int : " << i << std::endl;
-		float let = static_cast<float>(car);
-		std::cout << "Float : " << let << 'f' << std::endl;
-		double d = static_cast<double>(car);
-		std::cout << "Double : " << d << std::endl;
+		std::cout << "Int : " << static_cast<int>(car) << std::endl;
+		std::cout << "Float : " << static_cast<int>(car) << 'f' << std::endl;
+		std::cout << "Double : " << static_cast<int>(car) << std::endl;
 	}
 }
 
 ScalarConverter::~ScalarConverter( void ) {
-	std::cout << "ScalarConverter Destructor Called" << std::endl;	
 }

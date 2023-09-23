@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 16:58:36 by mnassi            #+#    #+#             */
-/*   Updated: 2023/09/21 14:56:23 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/09/23 11:21:07 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,12 @@
 #define st_ std::string
 
 class	ScalarConverter {
-	public :
+	private :
 		ScalarConverter( void );
 		ScalarConverter( const ScalarConverter &cpy);
 		ScalarConverter &operator=(const ScalarConverter &b);
-		void	convert( st_ check );
+	public :
+		static void	convert( st_ check );
 		~ScalarConverter( void );
 };
 
