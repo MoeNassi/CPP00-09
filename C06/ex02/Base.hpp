@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 18:27:52 by mnassi            #+#    #+#             */
-/*   Updated: 2023/09/23 18:44:32 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/09/24 15:20:34 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,9 @@
 
 class Base {
 	public :
-		Base  *generate(void);
-		virtual void printl();
+		static Base  *generate(void);
+		void	identify(Base *p);
+		void	identify(Base &p);
 		virtual ~Base( void );
 };
 

@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 16:58:29 by mnassi            #+#    #+#             */
-/*   Updated: 2023/09/23 12:18:38 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/09/24 16:32:20 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,4 +143,5 @@ void	ScalarConverter::convert( st_ check ) {
 }
 
 ScalarConverter::~ScalarConverter( void ) {
+
 }

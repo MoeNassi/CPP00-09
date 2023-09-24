@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 16:27:17 by mnassi            #+#    #+#             */
-/*   Updated: 2023/09/23 16:41:02 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/09/24 16:10:34 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,4 +19,5 @@ int main() {
 	uintptr_t sto = Serializer::serialize(exp);
 	exp = Serializer::deserialize(sto);
 	std::cout  << "after : " << exp->testing << std::endl;
+	delete exp;
 }

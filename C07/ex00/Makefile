@@ -1,14 +1,14 @@
-NAME =  Base
+NAME = whatever
 
 CPP = c++
 
-SRC = Base.cpp main.cpp
+CFLAGS = -Wall -Wextra -Werror -std=c++98
+
+SRC = main.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
-CFLAGS = -Wall -Wextra -Werror -std=c++98
-
-HEADER = Base.hpp A.hpp B.hpp C.hpp
+HEADER = whatever.hpp
 
 all : $(NAME)
 

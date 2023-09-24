@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 18:25:30 by mnassi            #+#    #+#             */
-/*   Updated: 2023/09/23 18:43:27 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/09/24 14:35:15 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 #include "Base.hpp"
 
 class C : public Base {
-	public :
-		void printl();
+
 };
 
 #endif
