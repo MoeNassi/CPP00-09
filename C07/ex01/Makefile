@@ -1,4 +1,4 @@
-NAME = whatever
+NAME = iter
 
 CPP = c++
 
@@ -8,7 +8,7 @@ SRC = main.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
-HEADER = whatever.hpp
+HEADER = iter.hpp
 
 all : $(NAME)
 
