@@ -18,6 +18,11 @@ $(NAME) : $(OBJ) $(HEADER)
 %.o : %.cpp $(HEADER)
 	$(CPP) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
 
+git :
+	git add .
+	git commit -m "geek"
+	git push
+
 clean :
 	rm -rf $(OBJ)
 
