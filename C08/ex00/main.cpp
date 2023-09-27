@@ -5,24 +5,21 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/24 18:30:03 by mnassi            #+#    #+#             */
-/*   Updated: 2023/09/26 16:19:02 by mnassi           ###   ########.fr       */
+/*   Created: 2023/09/27 11:53:14 by mnassi            #+#    #+#             */
+/*   Updated: 2023/09/27 16:33:18 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "whatever.hpp"
+#include "easyfind.hpp"
 
-int main( void ) {
-	int a = 2;
-	int b = 3;
-	::swap( a, b );
-	std::cout << "a = " << a << ", b = " << b << std::endl;
-	std::cout << "min( a, b ) = " << ::min( a, b ) << std::endl;
-	std::cout << "max( a, b ) = " << ::max( a, b ) << std::endl;
-	std::string c = "chaine1";
-	std::string d = "chaine2";
-	::swap(c, d);
-	std::cout << "c = " << c << ", d = " << d << std::endl;
-	std::cout << "min( c, d ) = " << ::min( c, d ) << std::endl;
-	std::cout << "max( c, d ) = " << ::max( c, d ) << std::endl;
+int main() {
+    try {
+		std::array<int, 6> ar = {21, 3, 6, 9, 12};
+        int result = easyfind(ar, 12);
+        std::cout << "Number found at index: " << result << std::endl;
+    } catch (int) {
+        std::cout << "Number on the array is not found" << std::endl;
+    }
+
+    return 0;
 }
