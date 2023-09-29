@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "lldb",
+      "request": "launch",
+      "args": [],
+      "cwd": "/Users/mnassi/Desktop/Cursus/CPP00-05/C08/ex01",
+      "program": "/Users/mnassi/Desktop/Cursus/CPP00-05/C08/ex01/build/Debug/outDebug"
+    }
+  ]
+}

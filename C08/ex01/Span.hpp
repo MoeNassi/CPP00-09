@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 14:12:25 by mnassi            #+#    #+#             */
-/*   Updated: 2023/09/27 17:11:00 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/09/29 18:46:59 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ class Span {
 		int longestSpan();
 		int shortestSpan();
 		void get_nB( void );
+		void addNumbers( std::vector< int >::iterator begin, std::vector < int >::iterator end );
 		class full : public std::exception {
 			public :
 				const char *what() const throw();

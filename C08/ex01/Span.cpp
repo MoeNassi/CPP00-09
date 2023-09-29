@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+ /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   Span.cpp                                           :+:      :+:    :+:   */
@@ -33,57 +33,19 @@ const char *Span::full::what() const throw() {
 	return ( "Error" );
 }
 
-void	swap( int &v1, int &v2 ) {
-	int	temp = v1;
-	v1 = v2;
-	v2 = temp;
-}
-
-int	min( int v1, int v2 ) {
-	if (v1 < v2)
-		return v1;
-	return v2;
-}
-
-int	max( int v1, int v2 ) {
-	if (v1 > v2)
-		return v1;
-	return v2;
-}
-
 int	Span::longestSpan() {
-	if (_arr.size() == 0)
+	if (_arr.size() <= 1)
 		throw (full());
-	for (int j = 0; j < (int)_arr.size() - 1; j++) {
-		bool didItSwap = false;
-		for (int i = 0; i < (int)_arr.size() - j - 1; i++) {
-			if (::min( _arr[i], _arr[i + 1]) == _arr[i + 1]) {
-				::swap( _arr[i], _arr[i + 1] );
-				didItSwap = true;
-			}
-		}
-		if (!didItSwap)
-			break ;
-	}
+	std::sort(_arr.begin(), _arr.end() );
 	int span = _arr[_arr.size() - 1] - _arr[0];
 	return (span);
 }
 
 int	Span::shortestSpan() {
-	if (_arr.size() == 0)
+	if (_arr.size() <= 1)
 		throw (full());
-	for (int j = 0; j < (int)_arr.size(); j++) {
-		bool didItSwap = false;
-		for (int i = 0; i < (int)_arr.size() - j - 1; i++) {
-			if (::min( _arr[i], _arr[i + 1]) == _arr[i + 1]) {
-				::swap( _arr[i], _arr[i + 1] );
-				didItSwap = true;
-			}
-		}
-		if (!didItSwap)
-			break ;
-	}
-	int span = 2147483647;
+	std::sort(_arr.begin(), _arr.end() );
+	int span = _arr[1] - _arr[0];
 	for (int i = 0; i < (int)_arr.size(); i++) {
 		if (_arr[i + 1] - _arr[i] < span && _arr[i + 1] - _arr[i] > 0) {
 			span = _arr[i + 1] - _arr[i];
@@ -101,6 +63,14 @@ void Span::addNumber( int add ) {
 	if (_arr.size() >= N)
 		throw (full());
 	_arr.push_back(add);
+}
+
+void Span::addNumbers( std::vector< int >::iterator begin, std::vector < int >::iterator end ) {
+	int	distance = std::distance(begin, end);
+	std::cout << *begin << *end << std::endl;
+	if ( distance + (int)_arr.size() >= (int)N )
+		throw (full());
+	_arr.insert(_arr.end(), begin, end);
 }
 
 Span &Span::operator=( const Span &b ) {
