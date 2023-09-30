@@ -60,15 +60,14 @@ void Span::get_nB( void ) {
 }
 
 void Span::addNumber( int add ) {
-	if (_arr.size() >= N)
+	if (_arr.size() > N)
 		throw (full());
 	_arr.push_back(add);
 }
 
 void Span::addNumbers( std::vector< int >::iterator begin, std::vector < int >::iterator end ) {
 	int	distance = std::distance(begin, end);
-	std::cout << *begin << *end << std::endl;
-	if ( distance + (int)_arr.size() >= (int)N )
+	if ( distance + (int)_arr.size() > (int)N )
 		throw (full());
 	_arr.insert(_arr.end(), begin, end);
 }
