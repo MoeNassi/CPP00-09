@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 13:19:46 by mnassi            #+#    #+#             */
-/*   Updated: 2023/09/30 18:06:25 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/10/02 15:32:27 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ class MutantStack : public std::stack < T, std::vector < T > > {
 	public :
 		typedef typename std::vector < T >::iterator iterator;
 		typedef typename std::vector < T >::reverse_iterator reverse_iterator;
-	public :
 		MutantStack( void ) {
 			
 		}
@@ -41,7 +40,8 @@ class MutantStack : public std::stack < T, std::vector < T > > {
 			return (this->c.rend());
 		}
 		MutantStack( const MutantStack &cpy ) {
-			(void)cpy;
+			this->iterator = cpy.iterator;
+			this->reverse_iterator = cpy.reverse_iterator;
 		}
 		~MutantStack( void ) {
 			

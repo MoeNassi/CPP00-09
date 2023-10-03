@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 14:35:08 by mnassi            #+#    #+#             */
-/*   Updated: 2023/09/30 12:46:46 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/10/03 16:46:31 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,8 @@ int main()
 		arr_.push_back(4);
 		sp.addNumbers( arr_.begin(), arr_.end());
 		sp.get_nB();
-		// sp.addNumber(1);
-		// sp.addNumber(12);
-		// sp.addNumber(2);
-		// std::cout << sp.shortestSpan() << std::endl;
-		// std::cout << sp.longestSpan() << std::endl;
+		std::cout << sp.shortestSpan() << std::endl;
+		std::cout << sp.longestSpan() << std::endl;
 
 	}
 	catch (std::exception &e) {
