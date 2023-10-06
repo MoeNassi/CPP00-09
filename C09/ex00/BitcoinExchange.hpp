@@ -15,6 +15,7 @@
 
 #include <iostream>
 #include <fstream>
+#include <sstream>
 #define	st_ std::string
 
 #endif
