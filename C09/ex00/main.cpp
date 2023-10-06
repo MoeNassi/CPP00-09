@@ -14,8 +14,10 @@
 
 bool	checkfile( st_ file ) {
 	st_ extension = ".txt";
-	if (&file[file.length() - 4] == extension)
-		return (true);
+	for (int i = 0; file[i]; i++)
+		if (file[i] == '.')
+			if (extension == &file[i])
+				return (true);
 	return (false);
 }
 
@@ -99,11 +101,18 @@ int	count_line( st_ file ) {
 }
 
 bool	all_good( st_ input[], st_ file ) {
-	int i = -1;
+	int i = 0;
 	int max = count_line(file);
 	while (input[++i].data() && i < max)
 		if (!main_ft(input[i].data()))
 			return (false);
+	return (true);
+}
+
+bool	check_firstline( st_ input ) {
+	st_ like = "date | value";
+	if (input != like)
+		return (false);
 	return (true);
 }
 
@@ -113,16 +122,27 @@ bool	then_checkThis( st_ file ) {
 	if (!in.is_open())
 		return (false);
 	for (int i = 0; std::getline(in, input[i]); i++);
-	if (!all_good(input, file))
+	if (!check_firstline(input[0]) || !all_good(input, file))
 		return (false);
 	return (true);
 }
 
+void	container_mp( st_ file ) {
+	std::ifstream	read(file);
+	st_				inp[count_line(file)];
+	std::map < st_ key, st_ value > _arr; // % 2 == 0
+	if (!read.is_open())
+		return ;
+	for (int i = 0; std::getline(read, inp[i], '|'); i++)
+
+}
+
 int main(int ac, char **av) {
-	if (ac != 2)
+	if (ac != 2 && !av[1])
 		return (std::cout << "Too Many Arguments" << std::endl, 0);
 	if (!checkfile(av[1]))
 		return (std::cout << "Extension Error" << std::endl, 0);
 	if (!then_checkThis(av[1]))
 		return (std::cout << "Input file Error" << std::endl, 0);
+	container_mp(av[1]);
 }
