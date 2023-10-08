@@ -47,7 +47,7 @@ bool	max_days( st_ year, st_ month, st_ day ) {
 	int		day_ = 0;
 	da >> day_;
 	if (year_ > 2022 || year_ < 2009)
-		return (printf("%d\n", year_),false);
+		return (false);
 	if (month_ < 1 || month_ > 12)
 		return (false);
 	if (day_ < 1 || day_ > 31)
@@ -76,7 +76,7 @@ bool	four_two_two( st_ input ) {
 	return (true);
 }
 
-bool	main_ft(st_ input) { // check for max days
+bool	main_ft(st_ input) {
 	int	minus = 0;
 	int pip = 0;
 	for (int i = 0; input[i]; i++) {
@@ -127,14 +127,36 @@ bool	then_checkThis( st_ file ) {
 	return (true);
 }
 
+bool	send( st_ value ) {
+	std::stringstream ss(value);
+	int st = 0;
+	if (value[0] != ' ')
+		return (false);
+	for (int i = 1; value[i] == '.' || value[i] == '+'; i++);
+	if (!(ss >> st))
+		return (false);
+	if (st < 0 || st > 1000)
+		return false;
+	return (true);
+}
+
 void	container_mp( st_ file ) {
 	std::ifstream	read(file);
-	st_				inp[count_line(file)];
-	std::map < st_ key, st_ value > _arr; // % 2 == 0
+	std::string key, value, temp;
+	std::map < st_, st_ > _arr;
 	if (!read.is_open())
 		return ;
-	for (int i = 0; std::getline(read, inp[i], '|'); i++)
-
+	std::getline(read, temp);
+	while (std::getline(read, key, '|') && std::getline(read, value)) {
+		if (value.empty() || !send(value) || key.empty())  {
+			std::cout << "perhaps the value is empty" << std::endl;
+			return ;
+		}
+		_arr[key] = value;
+	}
+	for (std::map<st_, st_>::iterator it = _arr.begin(); it != _arr.end(); it++) {
+		std::cout << it->first << std::endl;
+	}
 }
 
 int main(int ac, char **av) {
