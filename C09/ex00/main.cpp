@@ -31,7 +31,7 @@ bool	check_if_nb( st_ type ) {
 bool	linear( st_ year, st_ month, st_ day ) {
 	if (!check_if_nb(year) || !check_if_nb(day) || !check_if_nb(month))
 		return (false);
-	if (year.length() == 4 && month.length() == 2 && day.length() == 2)
+	if (year.length() == 4 && month.length() == 2 && day.length() == 3)
 		return (true);
 	return (false);
 }
@@ -67,8 +67,8 @@ bool	four_two_two( st_ input ) {
 			month = input.substr(rember, i - rember);
 			rember = i + 1;
 		}
-		else if (input[i] == '|')
-			day = input.substr(rember, i - rember - 1);
+		else if (!month.empty())
+			day = input.substr(rember);
 	}
 	if (!linear(year, month, day) || !check_if_nb(year)
 		|| !check_if_nb(month) || !check_if_nb(day) || !max_days(year, month, day))
@@ -78,16 +78,13 @@ bool	four_two_two( st_ input ) {
 
 bool	main_ft(st_ input) {
 	int	minus = 0;
-	int pip = 0;
 	for (int i = 0; input[i]; i++) {
 		if (input[i] == '-')
 			minus++;
-		if (input[i] == '|')
-			pip++;
 	}
 	if (!four_two_two( input ))
 		return false;
-	if (minus != 2 && pip != 1)
+	if (minus != 2)
 		return (false);
 	return true;
 }
@@ -98,15 +95,6 @@ int	count_line( st_ file ) {
 	while (std::getline(re, file))
 		lines++;
 	return (lines);
-}
-
-bool	all_good( st_ input[], st_ file ) {
-	int i = 0;
-	int max = count_line(file);
-	while (input[++i].data() && i < max)
-		if (!main_ft(input[i].data()))
-			return (false);
-	return (true);
 }
 
 bool	check_firstline( st_ input ) {
@@ -122,7 +110,7 @@ bool	then_checkThis( st_ file ) {
 	if (!in.is_open())
 		return (false);
 	for (int i = 0; std::getline(in, input[i]); i++);
-	if (!check_firstline(input[0]) || !all_good(input, file))
+	if (!check_firstline(input[0]))
 		return (false);
 	return (true);
 }
@@ -132,7 +120,12 @@ bool	send( st_ value ) {
 	int st = 0;
 	if (value[0] != ' ')
 		return (false);
-	for (int i = 1; value[i] == '.' || value[i] == '+'; i++);
+	for (int i = 1; value[i]; i++) {
+		if (value[i] == '.' || value[i] == '+')
+			i++;
+		if (!isdigit(value[i]))
+			return (false);
+	}
 	if (!(ss >> st))
 		return (false);
 	if (st < 0 || st > 1000)
@@ -140,31 +133,58 @@ bool	send( st_ value ) {
 	return (true);
 }
 
+void	read_N_reaaad( std::map < st_, st_ > &_arr ) {
+	std::ifstream	read("data.csv");
+	st_	temp, key, value;
+	if (!read.is_open())
+		return ;
+	std::getline(read, temp);
+	while (std::getline(read, key, ',') && std::getline(read, value))
+		_arr[key] = value;
+}
+
+float	found_it( st_ value, std::map < st_, st_ >::iterator v_s ) {
+	std::stringstream ss(v_s->second);
+	float first;
+	ss >> first;
+	std::stringstream st(value);
+	float sec;
+	st >> sec;
+	return (sec * first);
+}
+
 void	container_mp( st_ file ) {
 	std::ifstream	read(file);
 	std::string key, value, temp;
 	std::map < st_, st_ > _arr;
+	std::map < st_, st_ > data_base;
 	if (!read.is_open())
 		return ;
+	read_N_reaaad( data_base );
 	std::getline(read, temp);
 	while (std::getline(read, key, '|') && std::getline(read, value)) {
-		if (value.empty() || !send(value) || key.empty())  {
-			std::cout << "perhaps the value is empty" << std::endl;
-			return ;
+		temp = "";
+		if (value.empty() || !send(value) || key.empty() || !main_ft( key ))  {
+			std::cout << "Error: Perhaps the value is empty" << std::endl;
+			continue;
 		}
-		_arr[key] = value;
+		std::map < st_, st_ >::iterator st = data_base.find(key);
+		if (st == data_base.end())
+			st = data_base.lower_bound(key);
+		std::cout << key << " =>" << value << " = " << found_it(value, st) << std::endl;
+		_arr[key.substr(0, key.length() - 1)] = value;
 	}
-	for (std::map<st_, st_>::iterator it = _arr.begin(); it != _arr.end(); it++) {
-		std::cout << it->first << std::endl;
-	}
+	if (!temp.empty())
+		std::cout << "Error: Perhaps the value is empty" << std::endl;
+
 }
 
 int main(int ac, char **av) {
 	if (ac != 2 && !av[1])
-		return (std::cout << "Too Many Arguments" << std::endl, 0);
+		return (std::cout << "Error: could not open file" << std::endl, 0);
 	if (!checkfile(av[1]))
-		return (std::cout << "Extension Error" << std::endl, 0);
+		return (std::cout << "Error: Extension" << std::endl, 0);
 	if (!then_checkThis(av[1]))
-		return (std::cout << "Input file Error" << std::endl, 0);
+		std::cout << "Error: Input file" << std::endl;
 	container_mp(av[1]);
 }
