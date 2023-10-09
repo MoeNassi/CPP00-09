@@ -31,7 +31,7 @@ bool	check_if_nb( st_ type ) {
 bool	linear( st_ year, st_ month, st_ day ) {
 	if (!check_if_nb(year) || !check_if_nb(day) || !check_if_nb(month))
 		return (false);
-	if (year.length() == 4 && month.length() == 2 && day.length() == 3)
+	if (year.length() == 4 && month.length() == 2 && day.length() == 2)
 		return (true);
 	return (false);
 }
@@ -118,7 +118,7 @@ bool	then_checkThis( st_ file ) {
 bool	send( st_ value ) {
 	std::stringstream ss(value);
 	int st = 0;
-	if (value[0] != ' ')
+	if (value[0] != ' ' && !isdigit(value[1]))
 		return (false);
 	for (int i = 1; value[i]; i++) {
 		if (value[i] == '.' || value[i] == '+')
@@ -153,18 +153,28 @@ float	found_it( st_ value, std::map < st_, st_ >::iterator v_s ) {
 	return (sec * first);
 }
 
+bool	theres_is_a_pip( st_ input ) {
+	for (int i = 0; input[i]; i++)
+		if (input[i] == '|')
+			return (true);
+	return (false);
+}
+
 void	container_mp( st_ file ) {
 	std::ifstream	read(file);
 	std::string key, value, temp;
-	std::map < st_, st_ > _arr;
 	std::map < st_, st_ > data_base;
 	if (!read.is_open())
 		return ;
 	read_N_reaaad( data_base );
-	std::getline(read, temp);
-	while (std::getline(read, key, '|') && std::getline(read, value)) {
-		temp = "";
-		if (value.empty() || !send(value) || key.empty() || !main_ft( key ))  {
+	std::getline(read, value);
+	while (std::getline(read, temp)) {
+		size_t index = temp.find('|');
+		if (index != std::string::npos)  {
+			key = temp.substr(0, index - 1);
+			value = temp.substr(index + 1);
+		}
+		if (value.empty() || !send(value) || key.empty() || !main_ft( key )) {
 			std::cout << "Error: Perhaps the value is empty" << std::endl;
 			continue;
 		}
@@ -172,11 +182,7 @@ void	container_mp( st_ file ) {
 		if (st == data_base.end())
 			st = data_base.lower_bound(key);
 		std::cout << key << " =>" << value << " = " << found_it(value, st) << std::endl;
-		_arr[key.substr(0, key.length() - 1)] = value;
 	}
-	if (!temp.empty())
-		std::cout << "Error: Perhaps the value is empty" << std::endl;
-
 }
 
 int main(int ac, char **av) {
