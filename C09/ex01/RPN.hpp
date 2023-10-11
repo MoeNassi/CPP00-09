@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 17:07:24 by mnassi            #+#    #+#             */
-/*   Updated: 2023/10/09 17:08:45 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/10/11 18:05:08 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #define RPN_HPP
 
 #include <iostream>
-
-
+#include <stack>
+#define st_ std::string
 
 #endif
