@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 17:14:47 by mnassi            #+#    #+#             */
-/*   Updated: 2023/10/11 18:58:12 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/10/12 17:58:46 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ bool	is_form_good( st_ form ) {
 }
 
 int	operands_( int first, int sec, char ope ) {
+	if (ope == '/' && sec == 0)
+		return -9999;
 	if (ope == '-')
 		return first - sec;
 	if (ope == '+')
@@ -37,25 +39,33 @@ int	operands_( int first, int sec, char ope ) {
 	return (0);
 }
 
-bool	FILO( char *last ) {
+bool	FILO( st_ last ) {
 	std::stack < int > _arr;
+	if (!isdigit(last[0]) && last[0] != '-')
+		return false;
 	for (int i = 0; last[i]; i++) {
-		if (isdigit(last[i]))
-			_arr.push((int)last[i]);
-		else if (last[i] == '*' || last[i] == '+' || last[i] == '/' || last[i] == '-') {
-			std::cout << "_arr.size()" << std::endl;
-			for (int j = 0; j < (int)_arr.size() - 1; j++) {
-				int	st = _arr.top();
-				_arr.pop();
-				int st_2 = _arr.top();
-				std::cout << operands_(st, st_2, last[i]) << std::endl;
-			}
+		if (isdigit(last[i]) || (last[i] == '-' && isdigit(last[i + 1])))
+			_arr.push(last[i] - '0');
+		else if (last[i] == '+' || last[i] == '/' || last[i] == '-' || last[i] == '*') {
+			if (_arr.empty() || _arr.size() == 1)
+				return std::cout << "ASDfs\n", false;
+			int st = _arr.top();
+			_arr.pop();
+			int st_2 = _arr.top();
+			_arr.pop();
+			int pri = operands_(st_2, st, last[i]);
+			if (pri == -9999)
+				return false;
+			_arr.push(pri);
 		}
 		else if (last[i] == ' ' && last[i + 1] != ' ')
-			i++;
+			continue ;
 		else
 			return false;
 	}
+	if (_arr.size() >= 2)
+		return false;
+	std::cout << _arr.top() << std::endl;
 	return true;
 }
 
