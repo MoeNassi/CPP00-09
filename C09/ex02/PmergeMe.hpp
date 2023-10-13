@@ -16,4 +16,5 @@
 #include <vector>
 #include <deque>
 #include <stdlib.h>
+#include <sstream>
 #endif

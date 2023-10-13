@@ -13,10 +13,15 @@
 #include "PmergeMe.hpp"
 
 bool	is_negative( char **ch ) {
-	for (int i = 1 ; ch[i]; i++)
+	int st;
+	for (int i = 1 ; ch[i]; i++) {
+		std::stringstream	ss(ch[i]);
+		if (!(ss >> st))
+			return false;
 		for (int j = 0 ; ch[i][j]; j++)
 			if (!isdigit(ch[i][j]))
 				return false;
+	}
 	return true;
 }
 
@@ -27,7 +32,7 @@ int	fill_( std::vector < int > &v_arr, char **av ) {
 	return (i - 1);
 }
 
-void	f_swap( std::deque < std::pair < int, int > > &_arr_de, int index ) {
+void	f_swap( std::vector < std::pair < int, int > > &_arr_de, int index ) {
 	if (_arr_de[index].first > _arr_de[index].second)
 		return ;
 	int temp;
@@ -36,30 +41,53 @@ void	f_swap( std::deque < std::pair < int, int > > &_arr_de, int index ) {
 	_arr_de[index].second = temp;
 }
 
-void	first_pair( std::deque < std::pair< int, int > > &_arr_de, int size ) {
-	for (int index = 0; index < size && index + 1 != size ; index++) {
-		if (_arr_de[index].first < _arr_de[index + 1].first)
-			break ;
-		int temp = _arr_de[index].first;
-		_arr_de[index].first = _arr_de[index + 1].first;
-		_arr_de[index + 1].first = temp;
+void	first_pair( std::vector < std::pair< int, int > > &_arr_de, int size ) {
+	for (int index = 0; index < size ; index++) {
+		for (int j = 0; j < size ; j++) {
+			if (_arr_de[index].first < _arr_de[j].first) {
+				int key = _arr_de[index].first;
+				int value = _arr_de[index].second;
+				_arr_de[index].first = _arr_de[j].first;
+				_arr_de[index].second = _arr_de[j].second;
+				_arr_de[j].first = key;
+				_arr_de[j].second = value;
+			}
+		}
+	}
+}
+
+void	split_pair( std::vector < std::pair< int, int > > v_arr, 
+		std::vector < int > &f_arr, std::vector < int > &s_arr, int size ) {
+	for (int i = 0; i < size ; i++) {
+		f_arr.push_back(v_arr[i].first);
+	}
+	for (int i = 0; i < size ; i++) {
+		s_arr.push_back(v_arr[i].second);
 	}
 }
 
 void	begin_the_merge( std::vector < int > &v_arr, int size ) {
 	int		index = 0;
-	(void)size;
-	std::deque < std::pair< int, int > > _arr_de;
+	int		struggler = *(--v_arr.end());
+	(void)struggler;
+	if (size % 2 == 1)
+		v_arr.pop_back();
+
+	std::vector < std::pair< int, int > > _arr_de;
+
+	std::vector < int > _arr_first;
+	std::vector < int > _arr_sec;
+
 	for (std::vector < int >::iterator it = v_arr.begin(); it < v_arr.end(); it += 2) {
 		_arr_de.push_back(std::make_pair(*it, *(it + 1)));
 		f_swap( _arr_de, index );
 		index++;
 	}
 	first_pair( _arr_de, index );
+	split_pair( _arr_de ,_arr_first, _arr_sec, index );
 	std::cout << "after : ";
-	for (int i = 0; i < index ; i++) {
+	for (int i = 0; i < index ; i++)
 		std::cout << _arr_de[i].first << " " << _arr_de[i].second << " ";
-	}
 	std::cout << std::endl;
 }
 
