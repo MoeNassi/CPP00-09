@@ -27,21 +27,40 @@ int	fill_( std::vector < int > &v_arr, char **av ) {
 	return (i - 1);
 }
 
-void	f_swap() {
-	
+void	f_swap( std::deque < std::pair < int, int > > &_arr_de, int index ) {
+	if (_arr_de[index].first > _arr_de[index].second)
+		return ;
+	int temp;
+	temp = _arr_de[index].first;
+	_arr_de[index].first = _arr_de[index].second;
+	_arr_de[index].second = temp;
+}
+
+void	first_pair( std::deque < std::pair< int, int > > &_arr_de, int size ) {
+	for (int index = 0; index < size && index + 1 != size ; index++) {
+		if (_arr_de[index].first < _arr_de[index + 1].first)
+			break ;
+		int temp = _arr_de[index].first;
+		_arr_de[index].first = _arr_de[index + 1].first;
+		_arr_de[index + 1].first = temp;
+	}
 }
 
 void	begin_the_merge( std::vector < int > &v_arr, int size ) {
-	int		index = 1;
-	std::deque < int > arr_de(v_arr.begin(), v_arr.end());
-	if (size % 2 == 1)
-		int struggler = v_arr.end();
-	for (std::vector < int >::iterator it = v_arr.begin(); it < v_arr.end(); it++) {
-		arr_de.push_back(it);
+	int		index = 0;
+	(void)size;
+	std::deque < std::pair< int, int > > _arr_de;
+	for (std::vector < int >::iterator it = v_arr.begin(); it < v_arr.end(); it += 2) {
+		_arr_de.push_back(std::make_pair(*it, *(it + 1)));
+		f_swap( _arr_de, index );
 		index++;
-		if (index % 2 == 0)
-			f_swap(arr_de);
 	}
+	first_pair( _arr_de, index );
+	std::cout << "after : ";
+	for (int i = 0; i < index ; i++) {
+		std::cout << _arr_de[i].first << " " << _arr_de[i].second << " ";
+	}
+	std::cout << std::endl;
 }
 
 int main(int ac, char **av) {
@@ -53,5 +72,9 @@ int main(int ac, char **av) {
 	if (!is_negative(av))
 		return std::cout << "Error : Number" << std::endl, 0;
 	size_ve = fill_(v_arr, av);
-	begin_the_merge(arr_de, size_ve);
+	std::cout << "before : ";
+	for (std::vector < int >::iterator it = v_arr.begin(); it < v_arr.end(); it++)
+		std::cout << *it << " ";
+	std::cout << std::endl;
+	begin_the_merge(v_arr, size_ve);
 }
