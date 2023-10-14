@@ -64,6 +64,61 @@ void	split_pair( std::vector < std::pair< int, int > > v_arr,
 	for (int i = 0; i < size ; i++) {
 		s_arr.push_back(v_arr[i].second);
 	}
+	f_arr.insert(f_arr.begin(), v_arr[0].second);
+}
+
+bool	theNumber_isFordNumber( int Number, std::vector < int > &ch_e ) {
+	for (std::vector < int >::iterator it = ch_e.begin(); it < ch_e.end(); it++)
+		if (*it == Number || Number <= 0)
+			return false;
+	return true;
+}
+
+std::vector < int >	Ford_Johnson( std::vector < int > &v_arr ) {
+	std::vector < int > comb;
+	v_arr.reserve(15);
+	v_arr.push_back(0);
+	v_arr.push_back(1);
+	for (int index = 0; index < 15; index++) {
+		int foJoh = v_arr[index] * 2 + v_arr[index + 1];
+		v_arr.push_back( foJoh );
+	}
+	for (int index = 3; index < 7; index++) {
+		int take = v_arr[index];
+		comb.push_back(take);
+		take--;
+		while (theNumber_isFordNumber(take, v_arr)) {
+			comb.push_back(take);
+			take--;
+		}
+	}
+	return comb;
+}
+
+int	binarySearch( std::vector < int > &first, int find ) {
+	int left = 0;
+	int right = first.size() - 1;
+	while (left <= right) {
+		int mid = left + (right - left) / 2;
+		if (first[mid] == find)
+			return mid;
+		else if (first[mid] < find)
+			left = mid + 1;
+		else
+			right = mid - 1;
+	}
+	return 0;
+}
+
+void	binary_search( std::vector < int > &first, std::vector < int > &sec, std::vector < int > comb_ ) {
+	for (std::vector < int >::iterator it = comb_.begin(); it < comb_.end(); it++) {
+		int	index = *it - 1;
+		std::cout << sec[index] << std::endl;
+		if (sec[index]) {
+			std::vector < int >::iterator position = binarySearch( first, sec[index] ) + first.begin();
+			first.insert(position, *it);
+		}
+	}
 }
 
 void	begin_the_merge( std::vector < int > &v_arr, int size ) {
@@ -75,8 +130,10 @@ void	begin_the_merge( std::vector < int > &v_arr, int size ) {
 
 	std::vector < std::pair< int, int > > _arr_de;
 
-	std::vector < int > _arr_first;
 	std::vector < int > _arr_sec;
+	std::vector < int > _arr_first;
+	std::vector < int > Ford_nb;
+	std::vector < int > comb_;
 
 	for (std::vector < int >::iterator it = v_arr.begin(); it < v_arr.end(); it += 2) {
 		_arr_de.push_back(std::make_pair(*it, *(it + 1)));
@@ -85,9 +142,11 @@ void	begin_the_merge( std::vector < int > &v_arr, int size ) {
 	}
 	first_pair( _arr_de, index );
 	split_pair( _arr_de ,_arr_first, _arr_sec, index );
+	comb_ = Ford_Johnson(Ford_nb);
+	binary_search( _arr_first, _arr_sec, comb_ );
 	std::cout << "after : ";
-	for (int i = 0; i < index ; i++)
-		std::cout << _arr_de[i].first << " " << _arr_de[i].second << " ";
+	for (std::vector < int >::iterator it = _arr_first.begin(); it < _arr_first.end(); it++)
+		std::cout << *it << " ";
 	std::cout << std::endl;
 }
 
