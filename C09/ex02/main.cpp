@@ -60,8 +60,6 @@ void	split_pair( std::vector < std::pair< int, int > > v_arr,
 		std::vector < int > &f_arr, std::vector < int > &s_arr, int size ) {
 	for (int i = 0; i < size ; i++) {
 		f_arr.push_back(v_arr[i].first);
-	}
-	for (int i = 0; i < size ; i++) {
 		s_arr.push_back(v_arr[i].second);
 	}
 	f_arr.insert(f_arr.begin(), v_arr[0].second);
@@ -83,7 +81,7 @@ std::vector < int >	Ford_Johnson( std::vector < int > &v_arr ) {
 		int foJoh = v_arr[index] * 2 + v_arr[index + 1];
 		v_arr.push_back( foJoh );
 	}
-	for (int index = 3; index < 7; index++) {
+	for (int index = 3; index < (int)v_arr.size() - 1; index++) {
 		int take = v_arr[index];
 		comb.push_back(take);
 		take--;
@@ -107,16 +105,15 @@ int	binarySearch( std::vector < int > &first, int find ) {
 		else
 			right = mid - 1;
 	}
-	return 0;
+	return left;
 }
 
 void	binary_search( std::vector < int > &first, std::vector < int > &sec, std::vector < int > comb_ ) {
 	for (std::vector < int >::iterator it = comb_.begin(); it < comb_.end(); it++) {
 		int	index = *it - 1;
-		std::cout << sec[index] << std::endl;
-		if (sec[index]) {
+		if (index < (int)sec.size()) {
 			std::vector < int >::iterator position = binarySearch( first, sec[index] ) + first.begin();
-			first.insert(position, *it);
+			first.insert(position, sec[index]);
 		}
 	}
 }
@@ -144,7 +141,9 @@ void	begin_the_merge( std::vector < int > &v_arr, int size ) {
 	split_pair( _arr_de ,_arr_first, _arr_sec, index );
 	comb_ = Ford_Johnson(Ford_nb);
 	binary_search( _arr_first, _arr_sec, comb_ );
-	std::cout << "after : ";
+	if (size % 2 != 0)
+		_arr_first.insert(binarySearch( _arr_first, struggler ) + _arr_first.begin(), struggler);
+	std::cout << "after :  ";
 	for (std::vector < int >::iterator it = _arr_first.begin(); it < _arr_first.end(); it++)
 		std::cout << *it << " ";
 	std::cout << std::endl;
