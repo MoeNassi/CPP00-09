@@ -12,15 +12,6 @@
 
 #include "BitcoinExchange.hpp"
 
-bool	checkfile( st_ file ) {
-	st_ extension = ".txt";
-	for (int i = 0; file[i]; i++)
-		if (file[i] == '.')
-			if (extension == &file[i])
-				return (true);
-	return (false);
-}
-
 bool	check_if_nb( st_ type ) {
 	for (int i = 0; type[i] && type[i] != ' '; i++)
 		if (!isdigit(type[i]))
@@ -188,9 +179,7 @@ void	container_mp( st_ file ) {
 int main(int ac, char **av) {
 	if (ac != 2 && !av[1])
 		return (std::cout << "Error: could not open file" << std::endl, 0);
-	if (!checkfile(av[1]))
-		return (std::cout << "Error: Extension" << std::endl, 0);
 	if (!then_checkThis(av[1]))
-		std::cout << "Error: Input file" << std::endl;
+		return std::cout << "Error: Input file" << std::endl, 0;
 	container_mp(av[1]);
 }

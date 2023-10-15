@@ -6,7 +6,7 @@
 /*   By: mnassi <mnassi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 17:14:47 by mnassi            #+#    #+#             */
-/*   Updated: 2023/10/12 17:58:46 by mnassi           ###   ########.fr       */
+/*   Updated: 2023/10/15 16:04:06 by mnassi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ bool	FILO( st_ last ) {
 			_arr.push(last[i] - '0');
 		else if (last[i] == '+' || last[i] == '/' || last[i] == '-' || last[i] == '*') {
 			if (_arr.empty() || _arr.size() == 1)
-				return std::cout << "ASDfs\n", false;
+				return false;
 			int st = _arr.top();
 			_arr.pop();
 			int st_2 = _arr.top();
