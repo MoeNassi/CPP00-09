@@ -6,8 +6,8 @@
       "type": "lldb",
       "request": "launch",
       "args": [],
-      "cwd": "/Users/mnassi/Desktop/Cursus/CPP00-09/C09/ex00",
-      "program": "/Users/mnassi/Desktop/Cursus/CPP00-09/C09/ex00/build/Debug/outDebug"
+      "cwd": "/Users/mnassi/Desktop/Cursus/CPP00-09/C09/ex02",
+      "program": "/Users/mnassi/Desktop/Cursus/CPP00-09/C09/ex02/build/Debug/outDebug"
     }
   ]
 }

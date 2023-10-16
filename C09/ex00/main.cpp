@@ -37,6 +37,12 @@ bool	max_days( st_ year, st_ month, st_ day ) {
 	mon >> month_;
 	int		day_ = 0;
 	da >> day_;
+	if (year_ == 2022) {
+		if (month_ == 3 && (day_ == 30 || day_ == 31))
+			return false;
+		if (month_ > 3)
+			return false;
+	}
 	if (year_ > 2022 || year_ < 2009)
 		return (false);
 	if (month_ < 1 || month_ > 12)
@@ -85,6 +91,7 @@ int	count_line( st_ file ) {
 	int				lines = 0;
 	while (std::getline(re, file))
 		lines++;
+	re.close();
 	return (lines);
 }
 
@@ -103,13 +110,14 @@ bool	then_checkThis( st_ file ) {
 	for (int i = 0; std::getline(in, input[i]); i++);
 	if (!check_firstline(input[0]))
 		return (false);
+	in.close();
 	return (true);
 }
 
 bool	send( st_ value ) {
 	std::stringstream ss(value);
 	int st = 0;
-	if (value[0] != ' ' && !isdigit(value[1]))
+	if (value[0] != ' ' || !isdigit(value[1]))
 		return (false);
 	for (int i = 1; value[i]; i++) {
 		if (value[i] == '.' || value[i] == '+')
@@ -124,14 +132,16 @@ bool	send( st_ value ) {
 	return (true);
 }
 
-void	read_N_reaaad( std::map < st_, st_ > &_arr ) {
+bool	read_N_reaaad( std::map < st_, st_ > &_arr ) {
 	std::ifstream	read("data.csv");
 	st_	temp, key, value;
 	if (!read.is_open())
-		return ;
+		return false;
 	std::getline(read, temp);
 	while (std::getline(read, key, ',') && std::getline(read, value))
 		_arr[key] = value;
+	read.close();
+	return true;
 }
 
 float	found_it( st_ value, std::map < st_, st_ >::iterator v_s ) {
@@ -151,13 +161,12 @@ bool	theres_is_a_pip( st_ input ) {
 	return (false);
 }
 
-void	container_mp( st_ file ) {
+bool	container_mp( st_ file ) {
 	std::ifstream	read(file);
 	std::string key, value, temp;
 	std::map < st_, st_ > data_base;
-	if (!read.is_open())
-		return ;
-	read_N_reaaad( data_base );
+	if (!read.is_open() || !read_N_reaaad( data_base ))
+		return false;
 	std::getline(read, value);
 	while (std::getline(read, temp)) {
 		size_t index = temp.find('|');
@@ -174,12 +183,13 @@ void	container_mp( st_ file ) {
 			st = data_base.lower_bound(key);
 		std::cout << key << " =>" << value << " = " << found_it(value, st) << std::endl;
 	}
+	read.close();
+	return true;
 }
 
 int main(int ac, char **av) {
 	if (ac != 2 && !av[1])
 		return (std::cout << "Error: could not open file" << std::endl, 0);
-	if (!then_checkThis(av[1]))
+	if (!then_checkThis(av[1]) || !container_mp(av[1]))
 		return std::cout << "Error: Input file" << std::endl, 0;
-	container_mp(av[1]);
 }
